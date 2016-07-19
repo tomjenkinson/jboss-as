@@ -8562,6 +8562,23 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.commonjava.maven.plugins</groupId>
+                    <artifactId>project-sources-maven-plugin</artifactId>
+                    <version>1.0</version>
+                    <executions>
+                        <execution>
+                            <id>project-sources-archive</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>archive</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <assemblyRootFolder>${server.output.dir.prefix}-${server.output.dir.version}-src</assemblyRootFolder>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>${version.jar.plugin}</version>
