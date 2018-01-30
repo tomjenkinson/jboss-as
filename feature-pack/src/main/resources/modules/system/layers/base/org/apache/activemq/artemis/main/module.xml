@@ -63,8 +63,6 @@
         <!-- https://issues.jboss.org/browse/AS7-4936  this is to avoid an issue on IBM JDK -->
         <module name="sun.jdk"/>
         <!-- supported protocols (in addition to the CORE protocol) -->
-        <module name="org.apache.activemq.artemis.protocol.amqp" services="import" optional="true"/>
         <module name="org.apache.activemq.artemis.protocol.hornetq" services="import" optional="true"/>
-        <module name="org.apache.activemq.artemis.protocol.stomp" services="import" optional="true"/>
     </dependencies>
 </module>
