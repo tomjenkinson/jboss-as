@@ -21,6 +21,9 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 <module xmlns="urn:jboss:module:1.5" name="org.jboss.genericjms">
+    <properties>
+        <property name="jboss.api" value="unsupported"/>
+    </properties>
     <resources>
        <resource-root path="."/>
         <artifact name="${org.jboss.genericjms:generic-jms-ra-jar}"/>

@@ -23,6 +23,9 @@
   -->
 
 <module xmlns="urn:jboss:module:1.5" name="io.undertow.js">
+    <properties>
+        <property name="jboss.api" value="unsupported"/>
+    </properties>
 
     <resources>
         <artifact name="${io.undertow.js:undertow-js}"/>

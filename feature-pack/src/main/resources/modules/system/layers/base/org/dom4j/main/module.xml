@@ -23,6 +23,10 @@
   -->
 
 <module xmlns="urn:jboss:module:1.5" name="org.dom4j">
+  <properties>
+    <property name="jboss.api" value="unsupported"/>
+  </properties>
+
   <resources>
     <artifact name="${org.dom4j:dom4j}"/>
   </resources>

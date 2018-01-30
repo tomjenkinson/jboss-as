@@ -16,9 +16,9 @@
         http://www.fsf.org. -->
 
 <module xmlns="urn:jboss:module:1.5" name="org.picketlink.idm.schema">
-    <!-- This module is deprecated and subject to being removed in a subsequent release. -->
+    <!-- This module is unsupported and subject to being removed in a subsequent release. -->
     <properties>
-        <property name="jboss.api" value="deprecated"/>
+        <property name="jboss.api" value="unsupported"/>
     </properties>
 
     <resources>
