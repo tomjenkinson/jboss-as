@@ -54,16 +54,56 @@
     </server-groups>
 
     <host-excludes>
-        <host-exclude name="WildFly10.0">
-            <host-release id="WildFly10.0"/>
+        <host-exclude name="EAP62">
+            <host-release id="EAP6.2"/>
             <excluded-extensions>
                 <extension module="org.wildfly.extension.core-management"/>
                 <extension module="org.wildfly.extension.discovery"/>
                 <extension module="org.wildfly.extension.elytron"/>
+                <extension module="org.wildfly.extension.io"/>
+                <extension module="org.wildfly.extension.request-controller"/>
+                <extension module="org.wildfly.extension.security.manager"/>
+                <extension module="org.wildfly.extension.undertow"/>
             </excluded-extensions>
         </host-exclude>
-        <host-exclude name="WildFly10.1">
-            <host-release id="WildFly10.1"/>
+        <host-exclude name="EAP63">
+            <host-release id="EAP6.3"/>
+            <excluded-extensions>
+                <extension module="org.wildfly.extension.core-management"/>
+                <extension module="org.wildfly.extension.discovery"/>
+                <extension module="org.wildfly.extension.elytron"/>
+                <extension module="org.wildfly.extension.io"/>
+                <extension module="org.wildfly.extension.request-controller"/>
+                <extension module="org.wildfly.extension.security.manager"/>
+                <extension module="org.wildfly.extension.undertow"/>
+            </excluded-extensions>
+        </host-exclude>
+        <host-exclude name="EAP64">
+            <host-release id="EAP6.4"/>
+            <excluded-extensions>
+                <extension module="org.wildfly.extension.core-management"/>
+                <extension module="org.wildfly.extension.discovery"/>
+                <extension module="org.wildfly.extension.elytron"/>
+                <extension module="org.wildfly.extension.io"/>
+                <extension module="org.wildfly.extension.request-controller"/>
+                <extension module="org.wildfly.extension.security.manager"/>
+                <extension module="org.wildfly.extension.undertow"/>
+            </excluded-extensions>
+        </host-exclude>
+        <host-exclude name="EAP64z">
+            <host-api-version major-version="1" minor-version="8"/>
+            <excluded-extensions>
+                <extension module="org.wildfly.extension.core-management"/>
+                <extension module="org.wildfly.extension.discovery"/>
+                <extension module="org.wildfly.extension.elytron"/>
+                <extension module="org.wildfly.extension.io"/>
+                <extension module="org.wildfly.extension.request-controller"/>
+                <extension module="org.wildfly.extension.security.manager"/>
+                <extension module="org.wildfly.extension.undertow"/>
+            </excluded-extensions>
+        </host-exclude>
+        <host-exclude name="EAP70">
+            <host-release id="EAP7.0"/>
             <excluded-extensions>
                 <extension module="org.wildfly.extension.core-management"/>
                 <extension module="org.wildfly.extension.discovery"/>

@@ -12,7 +12,12 @@
         <feature-group name="iiop-sockets"/>
     </feature>
 
-    <feature-group name="standalone-gossip-ha"/>
+    <feature-group name="standalone-gossip-ha">
+        <include feature-id="subsystem.logging.root-logger.ROOT:subsystem=logging,root-logger=ROOT">
+            <param name="handlers" value="[&quot;FILE&quot;]"/>
+        </include>
+        <exclude spec="subsystem.logging.console-handler"/>
+    </feature-group>
     <feature-group name="jsr77"/>
     <feature-group name="iiop-openjdk"/>
     <feature-group name="messaging-activemq-ha"/>
