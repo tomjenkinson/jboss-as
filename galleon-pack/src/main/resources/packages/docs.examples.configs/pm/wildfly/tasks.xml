@@ -68,8 +68,8 @@
                 <param name="socket-binding-group" value="full-sockets" />
                 <feature spec="domain.server-group.jvm">
                     <param name="jvm" value="default"/>
-                    <param name="heap-size" value="64m"/>
-                    <param name="max-heap-size" value="512m"/>
+                    <param name="heap-size" value="1000m"/>
+                    <param name="max-heap-size" value="1000m"/>
                 </feature>
             </feature>
             <feature spec="domain.server-group">
@@ -78,8 +78,8 @@
                 <param name="socket-binding-group" value="full-ha-sockets" />
                 <feature spec="domain.server-group.jvm">
                     <param name="jvm" value="default"/>
-                    <param name="heap-size" value="64m"/>
-                    <param name="max-heap-size" value="512m"/>
+                    <param name="heap-size" value="1000m"/>
+                    <param name="max-heap-size" value="1000m"/>
                 </feature>
             </feature>
         </config>

@@ -13,6 +13,10 @@
     </feature>
 
     <feature-group name="standalone-ha">
+        <include feature-id="subsystem.logging.root-logger.ROOT:subsystem=logging,root-logger=ROOT">
+            <param name="handlers" value="[&quot;FILE&quot;]"/>
+        </include>
+        <exclude spec="subsystem.logging.console-handler"/>
         <feature spec="subsystem.modcluster">
             <feature spec="subsystem.modcluster.proxy">
                 <param name="proxy" value="default"/>
