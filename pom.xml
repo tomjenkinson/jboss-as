@@ -161,6 +161,7 @@
         <org.jboss.model.test.cache.root>[pom.xml,testsuite]</org.jboss.model.test.cache.root>
         <!-- Location relative to root that will be used for the cached legacy classpaths used by subsystem-test and core-model-test-->
         <org.jboss.model.test.classpath.cache>target/model-test-classpath-cache</org.jboss.model.test.classpath.cache>
+        <org.jboss.model.test.maven.repository.urls>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/,https://maven.repository.redhat.com/ga/,http://repository.jboss.org/nexus/content/groups/developer/</org.jboss.model.test.maven.repository.urls>
 
         <!-- Properties that drive the names of various directories produced by and used in the build -->
         <server.output.dir.prefix>wildfly</server.output.dir.prefix>
@@ -6503,7 +6504,26 @@
     </dependencyManagement>
 
     <repositories>
+        <!-- keep this repository the first -->
         <repository>
+            <id>jboss-eap-7.2-product-repository</id>
+            <name>JBoss EAP Product Repository</name>
+            <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
@@ -6512,24 +6532,34 @@
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
             </snapshots>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-            <layout>default</layout>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
+            <id>jboss-eap-7.2-product-repository</id>
+            <name>JBoss EAP Product Repository</name>
+            <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -6567,7 +6597,7 @@
                             <org.jboss.model.test.cache.root>${org.jboss.model.test.cache.root}</org.jboss.model.test.cache.root>
                             <org.jboss.model.test.classpath.cache>${org.jboss.model.test.classpath.cache}</org.jboss.model.test.classpath.cache>
                             <org.jboss.model.test.cache.strict>true</org.jboss.model.test.cache.strict>
-                            <!--<org.jboss.model.test.maven.repository.urls>${org.jboss.model.test.maven.repository.urls}</org.jboss.model.test.maven.repository.urls>-->
+                            <org.jboss.model.test.maven.repository.urls>${org.jboss.model.test.maven.repository.urls}</org.jboss.model.test.maven.repository.urls>
                         </systemPropertyVariables>
                         <systemProperties>
                             <property>
