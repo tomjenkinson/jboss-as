@@ -168,6 +168,7 @@
         <org.jboss.model.test.cache.root>[pom.xml,testsuite]</org.jboss.model.test.cache.root>
         <!-- Location relative to root that will be used for the cached legacy classpaths used by subsystem-test and core-model-test-->
         <org.jboss.model.test.classpath.cache>target/model-test-classpath-cache</org.jboss.model.test.classpath.cache>
+        <org.jboss.model.test.maven.repository.urls>${maven.repository.protocol}://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/,https://maven.repository.redhat.com/ga/,${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/developer/</org.jboss.model.test.maven.repository.urls>
 
         <!-- Properties that drive the names of various directories produced by and used in the build -->
         <server.output.dir.prefix>wildfly</server.output.dir.prefix>
@@ -181,10 +182,6 @@
              interferes with that. Use 'https' for builds that will be released
              to non-snapshot public maven repos -->
         <maven.repository.protocol>https</maven.repository.protocol>
-        <!-- The full remote maven repo URL; can be overridden via -D for special use cases -->
-        <maven.repository.url>${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/public/</maven.repository.url>
-        <!-- https://access.redhat.com/maven-repository -->
-        <maven.redhat.repository.url>${maven.repository.protocol}://maven.repository.redhat.com/ga/</maven.redhat.repository.url>
 
         <!-- Surefire args -->
         <surefire.extra.args></surefire.extra.args>
@@ -8477,19 +8474,20 @@
     </dependencyManagement>
 
     <repositories>
+        <!-- keep this repository the first -->
         <repository>
+            <id>jboss-eap-7.3-product-repository</id>
+            <name>JBoss EAP Product Repository</name>
+            <url>https://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/</url>
+            <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
             </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
                 <updatePolicy>never</updatePolicy>
             </snapshots>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>${maven.repository.url}</url>
-            <layout>default</layout>
         </repository>
         <repository>
             <releases>
@@ -8502,22 +8500,39 @@
             </snapshots>
             <id>jboss-enterprise-maven-repository</id>
             <name>JBoss Enterprise Maven Repository</name>
-            <url>${maven.redhat.repository.url}</url>
+            <url>https://maven.repository.redhat.com/ga/</url>
             <layout>default</layout>
+        </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
+            <id>jboss-eap-7.3-product-repository</id>
+            <name>JBoss EAP Product Repository</name>
+            <url>https://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/</url>
+            <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
             </snapshots>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>${maven.repository.url}</url>
         </pluginRepository>
         <pluginRepository>
             <releases>
@@ -8528,7 +8543,18 @@
             </snapshots>
             <id>jboss-enterprise-maven-repository</id>
             <name>JBoss Enterprise Maven Repository</name>
-            <url>${maven.redhat.repository.url}</url>
+            <url>https://maven.repository.redhat.com/ga/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
@@ -8566,7 +8592,7 @@
                             <org.jboss.model.test.cache.root>${org.jboss.model.test.cache.root}</org.jboss.model.test.cache.root>
                             <org.jboss.model.test.classpath.cache>${org.jboss.model.test.classpath.cache}</org.jboss.model.test.classpath.cache>
                             <org.jboss.model.test.cache.strict>true</org.jboss.model.test.cache.strict>
-                            <!--<org.jboss.model.test.maven.repository.urls>${org.jboss.model.test.maven.repository.urls}</org.jboss.model.test.maven.repository.urls>-->
+                            <org.jboss.model.test.maven.repository.urls>${org.jboss.model.test.maven.repository.urls}</org.jboss.model.test.maven.repository.urls>
                         </systemPropertyVariables>
                         <systemProperties>
                             <property>
@@ -9270,6 +9296,75 @@
                     <name>JBoss Staging Repository Group</name>
                     <url>https://repository.jboss.org/nexus/content/groups/staging/</url>
                     <layout>default</layout>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+
+        <profile>
+            <id>http</id>
+            <activation>
+                <property>
+                    <name>maven.repository.protocol</name>
+                    <value>http</value>
+                </property>
+            </activation>
+            <repositories>
+                <!-- keep this repository the first -->
+                <repository>
+                    <id>jboss-eap-7.3-product-repository</id>
+                    <name>JBoss EAP Product Repository</name>
+                    <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                    <id>jboss-enterprise-maven-repository</id>
+                    <name>JBoss Enterprise Maven Repository</name>
+                    <url>http://maven.repository.redhat.com/ga/</url>
+                    <layout>default</layout>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jboss-eap-7.3-product-repository</id>
+                    <name>JBoss EAP Product Repository</name>
+                    <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>jboss-enterprise-maven-repository</id>
+                    <name>JBoss Enterprise Maven Repository</name>
+                    <url>http://maven.repository.redhat.com/ga/</url>
                 </pluginRepository>
             </pluginRepositories>
         </profile>
