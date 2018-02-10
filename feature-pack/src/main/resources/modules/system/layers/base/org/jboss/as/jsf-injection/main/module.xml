@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-jsf-injection}"/>
+        <artifact name="${org.jboss.eap:wildfly-jsf-injection}"/>
         <artifact name="${org.jboss.weld.module:weld-jsf}"/>
     </resources>
 

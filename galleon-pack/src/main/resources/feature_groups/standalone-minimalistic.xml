@@ -17,7 +17,7 @@
         </feature>
     </feature>
 
-    <origin name="org.wildfly:wildfly-servlet-galleon-pack">
+    <origin name="org.jboss.eap:wildfly-servlet-galleon-pack">
         <feature-group name="security-realms">
             <exclude feature-id="core-service.management.security-realm:security-realm=ApplicationRealm"/>
             <exclude spec="core-service.management.security-realm.authorization.properties" />

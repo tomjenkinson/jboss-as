@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-marshalling-infinispan}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-marshalling-infinispan}"/>
     </resources>
 
     <dependencies>

@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-rts}"/>
+        <artifact name="${org.jboss.eap:wildfly-rts}"/>
     </resources>
 
     <exports>

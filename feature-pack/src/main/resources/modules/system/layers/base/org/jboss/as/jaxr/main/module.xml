@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-jaxr}"/>
+        <artifact name="${org.jboss.eap:wildfly-jaxr}"/>
     </resources>
 
     <dependencies>

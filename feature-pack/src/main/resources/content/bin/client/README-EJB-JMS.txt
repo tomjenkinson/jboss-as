@@ -34,12 +34,12 @@ Maven users should not use this jar, but should use the following BOM dependenci
 
     <dependencies>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-jms-client-bom</artifactId>
             <type>pom</type>
         </dependency>

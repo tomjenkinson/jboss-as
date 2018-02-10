@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-naming}"/>
+        <artifact name="${org.jboss.eap:wildfly-naming}"/>
     </resources>
 
     <dependencies>

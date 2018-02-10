@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-iiop-openjdk}"/>
+        <artifact name="${org.jboss.eap:wildfly-iiop-openjdk}"/>
     </resources>
 
     <dependencies>

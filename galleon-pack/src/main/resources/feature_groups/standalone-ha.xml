@@ -23,7 +23,7 @@
     <feature-group name="access-control"/>
     <feature-group name="health"/>
 
-    <origin name="org.wildfly:wildfly-servlet-galleon-pack">
+    <origin name="org.jboss.eap:wildfly-servlet-galleon-pack">
         <feature-group name="standalone-profile"/>
     </origin>
     <feature-group name="basic-ha-profile"/>

@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-mod_cluster-extension}"/>
+        <artifact name="${org.jboss.eap:wildfly-mod_cluster-extension}"/>
     </resources>
 
     <dependencies>

@@ -35,7 +35,7 @@
     </exports>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-jdr}"/>
+        <artifact name="${org.jboss.eap:wildfly-jdr}"/>
         <resource-root path="resources"/>
     </resources>
 

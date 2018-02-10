@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-singleton-extension}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-singleton-extension}"/>
     </resources>
 
     <dependencies>

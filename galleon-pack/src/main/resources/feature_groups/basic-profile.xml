@@ -9,7 +9,7 @@
         </feature>
     </feature-group>
 
-    <origin name="org.wildfly:wildfly-servlet-galleon-pack">
+    <origin name="org.jboss.eap:wildfly-servlet-galleon-pack">
         <feature-group name="basic-profile"/>
     </origin>
 
