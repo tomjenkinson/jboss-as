@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-microprofile-metrics-smallrye}"/>
+        <artifact name="${org.jboss.eap:wildfly-microprofile-metrics-smallrye}"/>
     </resources>
 
     <dependencies>

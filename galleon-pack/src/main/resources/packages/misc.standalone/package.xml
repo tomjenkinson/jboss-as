@@ -2,7 +2,7 @@
 
 <package-spec xmlns="urn:jboss:galleon:package:2.0" name="misc.standalone">
     <dependencies>
-        <origin name="org.wildfly:wildfly-servlet-galleon-pack">
+        <origin name="org.jboss.eap:wildfly-servlet-galleon-pack">
             <package name="misc.standalone"/>
         </origin>
         <package name="misc.common"/>

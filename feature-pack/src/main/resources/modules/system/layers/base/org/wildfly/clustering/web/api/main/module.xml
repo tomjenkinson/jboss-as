@@ -25,7 +25,7 @@
 <module xmlns="urn:jboss:module:1.5" name="org.wildfly.clustering.web.api">
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-web-api}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-web-api}"/>
     </resources>
 
     <dependencies>

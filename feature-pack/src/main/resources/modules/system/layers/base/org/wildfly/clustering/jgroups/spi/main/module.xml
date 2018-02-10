@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-jgroups-spi}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-jgroups-spi}"/>
     </resources>
 
     <dependencies>

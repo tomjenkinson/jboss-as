@@ -33,7 +33,7 @@
     </exports>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-weld}"/>
+        <artifact name="${org.jboss.eap:wildfly-weld}"/>
     </resources>
 
     <dependencies>

@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-weld-transactions}"/>
+        <artifact name="${org.jboss.eap:wildfly-weld-transactions}"/>
     </resources>
 
     <dependencies>

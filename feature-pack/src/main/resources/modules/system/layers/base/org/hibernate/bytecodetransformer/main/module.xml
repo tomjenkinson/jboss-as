@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-ormtransformer}"/>
+        <artifact name="${org.jboss.eap:wildfly-ormtransformer}"/>
     </resources>
 
     <dependencies>

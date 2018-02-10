@@ -29,7 +29,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-security-api}" />
+        <artifact name="${org.jboss.eap:wildfly-security-api}" />
     </resources>
 
     <dependencies>

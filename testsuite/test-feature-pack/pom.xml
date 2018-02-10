@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.wildfly</groupId>
+        <groupId>org.jboss.eap</groupId>
         <artifactId>wildfly-parent</artifactId>
         <version>18.0.0.Final-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>

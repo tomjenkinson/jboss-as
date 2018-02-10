@@ -21,7 +21,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-microprofile-opentracing-smallrye}"/>
+        <artifact name="${org.jboss.eap:wildfly-microprofile-opentracing-smallrye}"/>
     </resources>
 
     <dependencies>

@@ -27,8 +27,8 @@
         </dependency>
     </transitive>
     <dependencies>
-        <dependency group-id="org.wildfly" artifact-id="wildfly-servlet-galleon-pack">
-            <name>org.wildfly:wildfly-servlet-galleon-pack</name>
+        <dependency group-id="org.jboss.eap" artifact-id="wildfly-servlet-galleon-pack">
+            <name>org.jboss.eap:wildfly-servlet-galleon-pack</name>
             <packages inherit="false">
                 <exclude name="product.conf"/>
             </packages>
@@ -36,8 +36,8 @@
         </dependency>
     </dependencies>
     <dependencies>
-        <dependency group-id="org.wildfly" artifact-id="wildfly-galleon-pack">
-            <name>org.wildfly:wildfly-galleon-pack</name>
+        <dependency group-id="org.jboss.eap" artifact-id="wildfly-galleon-pack">
+            <name>org.jboss.eap:wildfly-galleon-pack</name>
             <default-configs inherit="false">
                 <include model="standalone" name="standalone.xml"/>
             </default-configs>

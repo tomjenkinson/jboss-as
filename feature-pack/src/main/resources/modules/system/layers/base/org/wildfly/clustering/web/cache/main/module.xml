@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-web-cache}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-web-cache}"/>
     </resources>
 
     <dependencies>

@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-marshalling-jboss}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-marshalling-jboss}"/>
     </resources>
 
     <dependencies>

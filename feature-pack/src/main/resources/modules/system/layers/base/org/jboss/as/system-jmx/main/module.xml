@@ -29,7 +29,7 @@
     </exports>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-system-jmx}"/>
+        <artifact name="${org.jboss.eap:wildfly-system-jmx}"/>
     </resources>
 
     <dependencies>

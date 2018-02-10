@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-messaging-activemq}"/>
+        <artifact name="${org.jboss.eap:wildfly-messaging-activemq}"/>
         <artifact name="${org.jboss.activemq.artemis.integration:artemis-wildfly-integration}"/>
     </resources>
 

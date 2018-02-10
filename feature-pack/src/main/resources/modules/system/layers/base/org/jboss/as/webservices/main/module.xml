@@ -32,7 +32,7 @@
     </exports>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-webservices-server-integration}"/>
+        <artifact name="${org.jboss.eap:wildfly-webservices-server-integration}"/>
         <artifact name="${org.jboss.ws.cxf:jbossws-cxf-resources::wildfly1400}"/>
     </resources>
 

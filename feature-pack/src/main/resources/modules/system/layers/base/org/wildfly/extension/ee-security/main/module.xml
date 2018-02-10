@@ -33,7 +33,7 @@
     </exports>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-ee-security}"/>
+        <artifact name="${org.jboss.eap:wildfly-ee-security}"/>
     </resources>
 
     <dependencies>

@@ -32,7 +32,7 @@
     </exports>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-clustering-web-hotrod}"/>
+        <artifact name="${org.jboss.eap:wildfly-clustering-web-hotrod}"/>
     </resources>
 
     <dependencies>

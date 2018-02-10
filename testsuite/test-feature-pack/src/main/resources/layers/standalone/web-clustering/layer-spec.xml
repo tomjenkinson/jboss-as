@@ -5,7 +5,7 @@
         <layer name="transactions"/>
     </dependencies>
 
-    <origin name="org.wildfly:wildfly-servlet-galleon-pack">
+    <origin name="org.jboss.eap:wildfly-servlet-galleon-pack">
         <feature-group name="private-interface"/>
     </origin>
 

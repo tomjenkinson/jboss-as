@@ -28,7 +28,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly:wildfly-messaging}"/>
+        <artifact name="${org.jboss.eap:wildfly-messaging}"/>
     </resources>
 
     <dependencies>
