@@ -133,14 +133,15 @@
         <jboss.as.scm.url>https://github.com/wildfly/wildfly</jboss.as.scm.url>
 
         <!-- Other release identification information that drives how the built server identifies itself -->
-        <full.dist.product.release.name>WildFly Full</full.dist.product.release.name>
-        <full.dist.product.slot>wildfly-full</full.dist.product.slot>
+        <full.dist.product.release.name>JBoss EAP CD</full.dist.product.release.name>
+        <full.dist.product.slot>eap</full.dist.product.slot>
         <servlet.dist.product.release.name>WildFly Servlet</servlet.dist.product.release.name>
         <servlet.dist.product.slot>wildfly-web</servlet.dist.product.slot>
-        <product.release.version>${project.version}</product.release.version>
+        <product.release.version>7.3.0.CDxx</product.release.version>
+        <jboss.eap.release.version>7.3</jboss.eap.release.version>
         <product.docs.server.version>18</product.docs.server.version>
         <!-- A short variant of product.release.version used in 'startsWith' tests done by dist verification logic -->
-        <verifier.product.release.version>18.0</verifier.product.release.version>
+        <verifier.product.release.version>${jboss.eap.release.version}</verifier.product.release.version>
 
         <!-- Galleon -->
         <galleon.fork.embedded>true</galleon.fork.embedded>
@@ -173,7 +174,7 @@
         <!-- Properties that drive the names of various directories produced by and used in the build -->
         <server.output.dir.prefix>jboss-eap</server.output.dir.prefix>
         <!-- Version suffix that is appended to directories. Default is the maven GAV version but this can be edited to use a short form version -->
-        <server.output.dir.version>${project.version}</server.output.dir.version>
+        <server.output.dir.version>${jboss.eap.release.version}</server.output.dir.version>
         <wildfly.build.output.dir>build/target/${server.output.dir.prefix}-${server.output.dir.version}</wildfly.build.output.dir>
         <wildfly.web.build.output.dir>servlet-dist/target/${server.output.dir.prefix}-servlet-${server.output.dir.version}</wildfly.web.build.output.dir>
 
