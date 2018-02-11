@@ -22,17 +22,19 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module xmlns="urn:jboss:module:1.5" name="org.jboss.as.console">
+<module xmlns="urn:jboss:module:1.5" name="org.jboss.as.domain-http-error-context" slot="eap">
+
     <properties>
         <property name="jboss.api" value="private"/>
     </properties>
 
     <resources>
-        <artifact name="${org.jboss.hal:hal-console::resources}"/>
+        <resource-root path="dir"/>
+        <!-- Insert resources here -->
     </resources>
 
     <dependencies>
-        <!-- Do not add dependencies to the console as resources in any
+        <!-- Do not add dependencies to the error context as resources in any
              dependencies could be served up through the HTTP interface. -->
     </dependencies>
 </module>
