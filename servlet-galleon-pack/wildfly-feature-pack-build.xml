@@ -49,6 +49,7 @@
         <packages>
             <package name="product.conf" optional="true"/>
             <package name="misc.standalone"/>
+            <package name="cleanup.community.content"/>
         </packages>
     </config>
 
@@ -56,6 +57,7 @@
         <packages>
             <package name="product.conf" optional="true"/>
             <package name="misc.domain"/>
+            <package name="cleanup.community.content"/>
         </packages>
     </config>
 

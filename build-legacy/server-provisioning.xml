@@ -21,6 +21,12 @@
   -->
 <server-provisioning xmlns="urn:wildfly:server-provisioning:1.0">
     <feature-packs>
-        <feature-pack groupId="org.jboss.eap" artifactId="wildfly-feature-pack" version="${project.version}"/>
+        <feature-pack groupId="org.jboss.eap" artifactId="wildfly-feature-pack" version="${project.version}">
+            <contents>
+                <filter pattern="copyright.txt" include="false"/>
+                <filter pattern="README.txt" include="false"/>
+                <filter pattern="docs/contrib/*" include="false"/>
+            </contents>
+        </feature-pack>
     </feature-packs>
 </server-provisioning>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<tasks xmlns="urn:wildfly:wildfly-feature-pack-tasks:2.0">
+    <delete path="copyright.txt" recursive="false"/>
+    <delete path="README.txt" recursive="false"/>
+    <delete path="docs/contrib" recursive="true"/>
+</tasks>
