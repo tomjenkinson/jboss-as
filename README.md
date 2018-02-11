@@ -1,5 +1,5 @@
-WildFly Application Server
-========================
+JBoss Enterprise Application Platform (JBoss EAP) 7
+===================================================
 http://wildfly.org
 
 * Fast Startup
@@ -33,11 +33,11 @@ On Windows
     mvnw install
 
 
-Starting and Stopping WildFly
-------------------------------------------
+Starting and Stopping JBoss EAP
+-------------------------------
 Change to the bin directory after a successful build
 
-$ cd build/target/wildfly-\[version\]/bin
+$ cd build/target/jboss-eap/bin
 
 Start the server in domain mode
 
@@ -51,7 +51,6 @@ To stop the server, press Ctrl + C, or use the admin console
 
     ./jboss-cli.sh --connect command=:shutdown
 
-More information: https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide
 
 Contributing
 ------------------
@@ -60,14 +59,14 @@ https://developer.jboss.org/wiki/HackingOnWildFly
 Build vs. Dist directories
 --------------------------
 
-After running `mvn install`, WildFly will be available in two distinct directories, `build` and `dist`.
+After running `mvn install`, JBoss EAP 7 will be available in two distinct directories, `build` and `dist`.
 
-* The `build` directory contains a build of WildFly that is based on Maven artifact resolution for module configuration
-* The `dist` directory, on the other hand, contains a full distributable build of WildFly
+* The `build` directory contains a build of JBoss EAP 7 that is based on Maven artifact resolution for module configuration
+* The `dist` directory, on the other hand, contains a full distributable build of JBoss EAP 7
 
-Using the `build` directory makes iterating with subsystem or module development easier since there is no need to rebuild the whole of WildFly or copy JAR files around on every change.
+Using the `build` directory makes iterating with subsystem or module development easier since there is no need to rebuild the whole of JBoss EAP 7 or copy JAR files around on every change.
 
-The `dist` directory is better suited when a full build of WildFly is needed for development or test purposes.
+The `dist` directory is better suited when a full build of JBoss EAP 7 is needed for development or test purposes.
 
 Running the Testsuite
 --------------------
