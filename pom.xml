@@ -171,7 +171,7 @@
         <org.jboss.model.test.maven.repository.urls>${maven.repository.protocol}://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/,https://maven.repository.redhat.com/ga/,${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/developer/</org.jboss.model.test.maven.repository.urls>
 
         <!-- Properties that drive the names of various directories produced by and used in the build -->
-        <server.output.dir.prefix>wildfly</server.output.dir.prefix>
+        <server.output.dir.prefix>jboss-eap</server.output.dir.prefix>
         <!-- Version suffix that is appended to directories. Default is the maven GAV version but this can be edited to use a short form version -->
         <server.output.dir.version>${project.version}</server.output.dir.version>
         <wildfly.build.output.dir>build/target/${server.output.dir.prefix}-${server.output.dir.version}</wildfly.build.output.dir>
