@@ -5,6 +5,7 @@
         <origin name="org.jboss.eap:wildfly-servlet-galleon-pack">
             <package name="misc.standalone"/>
         </origin>
+        <package name="bin.standalone"/>
         <package name="misc.common"/>
     </dependencies>
 </package-spec>
