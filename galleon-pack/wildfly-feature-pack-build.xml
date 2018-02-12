@@ -46,6 +46,7 @@
         domain configuration models.-->
         <package name="appclient"/>
         <package name="bin"/>
+        <package name="JBossEULA.txt"/>
     </default-packages>
     <package-schemas>
         <group name="org.jboss.as"/>
