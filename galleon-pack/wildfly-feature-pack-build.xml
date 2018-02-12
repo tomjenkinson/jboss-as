@@ -47,6 +47,7 @@
         <package name="appclient"/>
         <package name="bin"/>
         <package name="JBossEULA.txt"/>
+        <package name="version.txt"/>
     </default-packages>
     <package-schemas>
         <group name="org.jboss.as"/>
