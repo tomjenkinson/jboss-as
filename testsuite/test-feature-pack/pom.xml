@@ -29,7 +29,7 @@
 
     <parent>
         <groupId>org.jboss.eap</groupId>
-        <artifactId>wildfly-parent</artifactId>
+        <artifactId>jboss-eap-parent</artifactId>
         <version>18.0.0.Final-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
