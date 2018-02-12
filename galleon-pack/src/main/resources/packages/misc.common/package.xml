@@ -7,5 +7,6 @@
         </origin>
         <package name="appclient" optional="true"/>
         <package name="bin"/>
+        <package name="JBossEULA.txt"/>
     </dependencies>
 </package-spec>
