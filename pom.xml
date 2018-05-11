@@ -252,7 +252,7 @@
         <version.javax.enterprise>2.0.SP1</version.javax.enterprise>
         <version.javax.json.api>1.1.2.redhat-1</version.javax.json.api>
         <version.javax.json.bind.api>1.0.0.redhat-1</version.javax.json.bind.api>
-        <version.javax.jws.jsr181-api>1.0-MR1</version.javax.jws.jsr181-api>
+        <version.javax.jws.jsr181-api>1.0.0.MR1-redhat-8</version.javax.jws.jsr181-api>
         <version.javax.mail>1.6.1</version.javax.mail>
         <version.javax.persistence>2.2</version.javax.persistence>
         <version.javax.security.enterprise>1.0</version.javax.security.enterprise>
