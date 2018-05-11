@@ -247,7 +247,7 @@
         <version.io.smallrye.smallrye-health>1.0.2</version.io.smallrye.smallrye-health>
         <version.io.smallrye.opentracing>1.1.1</version.io.smallrye.opentracing>
         <version.io.undertow.jastow>2.0.6.Final</version.io.undertow.jastow>
-        <version.io.undertow.js>1.0.2.Final</version.io.undertow.js>
+        <version.io.undertow.js>1.0.2.Final-redhat-1</version.io.undertow.js>
         <version.javax.activation>1.1.1</version.javax.activation>
         <version.javax.enterprise>2.0.SP1</version.javax.enterprise>
         <version.javax.json.api>1.1.2</version.javax.json.api>
