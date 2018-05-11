@@ -262,7 +262,7 @@
         <version.joda-time>2.9.7.redhat-1</version.joda-time>
         <version.jsoup>1.8.3.redhat-2</version.jsoup>
         <version.net.jcip>1.0.0.redhat-8</version.net.jcip>
-        <version.net.shibboleth.utilities.java-support>7.1.1</version.net.shibboleth.utilities.java-support>
+        <version.net.shibboleth.utilities.java-support>7.1.1.redhat-2</version.net.shibboleth.utilities.java-support>
         <version.org.apache.activemq.artemis>2.6.3.jbossorg-001</version.org.apache.activemq.artemis>
         <version.org.apache.avro>1.7.6</version.org.apache.avro>
         <version.org.apache.cxf>3.2.5.redhat-00001</version.org.apache.cxf>
