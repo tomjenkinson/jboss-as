@@ -249,7 +249,7 @@
         <version.io.undertow.jastow>2.0.6.Final</version.io.undertow.jastow>
         <version.io.undertow.js>1.0.2.Final-redhat-1</version.io.undertow.js>
         <version.javax.activation>1.1.1.redhat-5</version.javax.activation>
-        <version.javax.enterprise>2.0.SP1</version.javax.enterprise>
+        <version.javax.enterprise>2.0.0.SP1-redhat-00001</version.javax.enterprise>
         <version.javax.json.api>1.1.2.redhat-1</version.javax.json.api>
         <version.javax.json.bind.api>1.0.0.redhat-1</version.javax.json.bind.api>
         <version.javax.jws.jsr181-api>1.0.0.MR1-redhat-8</version.javax.jws.jsr181-api>
