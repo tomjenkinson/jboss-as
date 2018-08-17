@@ -214,14 +214,14 @@
                         <dependencies>
                             <dependency>
                                 <groupId>org.jboss.universe</groupId>
-                                <artifactId>community-universe</artifactId>
-                                <version>${version.org.jboss.universe.community-universe}</version>
+                                <artifactId>product-universe</artifactId>
+                                <version>${version.org.jboss.universe.product-universe}</version>
                                 <scope>runtime</scope>
                             </dependency>
                             <dependency>
                                 <groupId>org.jboss.universe.producer</groupId>
-                                <artifactId>wildfly-producers</artifactId>
-                                <version>${version.org.jboss.universe.producer.wildfly-producers}</version>
+                                <artifactId>jboss-eap-producers</artifactId>
+                                <version>${version.org.jboss.universe.producer.jboss-eap-producers}</version>
                                 <scope>runtime</scope>
                             </dependency>
                             <dependency>
