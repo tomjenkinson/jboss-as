@@ -379,7 +379,7 @@
         <version.org.wildfly.http-client>1.0.12.Final-redhat-1</version.org.wildfly.http-client>
         <version.org.wildfly.naming-client>1.0.9.Final-redhat-1</version.org.wildfly.naming-client>
         <version.org.wildfly.transaction.client>1.1.2.Final-redhat-1</version.org.wildfly.transaction.client>
-        <version.org.yaml.snakeyaml>1.18</version.org.yaml.snakeyaml>
+        <version.org.yaml.snakeyaml>1.18.0.redhat-2</version.org.yaml.snakeyaml>
         <version.rhino.js>1.7R2</version.rhino.js>
         <version.sun.jaxb>2.3.0.redhat-1</version.sun.jaxb>
         <version.sun.saaj-impl>1.3.16.SP1-redhat-6</version.sun.saaj-impl>
