@@ -299,7 +299,7 @@
         <version.org.glassfish.javax.json>1.1.2.redhat-1</version.org.glassfish.javax.json>
         <version.org.glassfish.soteria>1.0.0.redhat-1</version.org.glassfish.soteria>
         <version.org.hibernate>5.3.6.Final</version.org.hibernate>
-        <version.org.hibernate.commons.annotations>5.0.4.Final</version.org.hibernate.commons.annotations>
+        <version.org.hibernate.commons.annotations>5.0.4.Final-redhat-00001</version.org.hibernate.commons.annotations>
         <version.org.hibernate.search>5.10.3.Final</version.org.hibernate.search>
         <version.org.hibernate.validator>6.0.13.Final</version.org.hibernate.validator>
         <version.org.hornetq>2.4.7.Final-redhat-1</version.org.hornetq>
