@@ -4565,6 +4565,10 @@
                 <version>${version.org.jboss.ironjacamar}</version>
                 <exclusions>
                     <exclusion>
+                        <groupId>org.jboss.ironjacamar</groupId>
+                        <artifactId>ironjacamar-spec-api</artifactId>
+                    </exclusion>
+                    <exclusion>
                         <groupId>org.jboss</groupId>
                         <artifactId>jboss-common-core</artifactId>
                     </exclusion>
