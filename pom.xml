@@ -275,7 +275,6 @@
         <version.org.apache.myfaces.core>2.3.1</version.org.apache.myfaces.core>
         <version.org.apache.neethi>3.1.1.redhat-1</version.org.apache.neethi>
         <version.org.apache.openjpa>2.4.2</version.org.apache.openjpa>
-        <version.org.apache.qpid.proton>0.16.0</version.org.apache.qpid.proton>
         <version.org.apache.santuario>2.1.2.redhat-00001</version.org.apache.santuario>
         <version.org.apache.thrift>0.11.0.redhat-00006</version.org.apache.thrift>
         <version.org.apache.velocity>2.0.0.redhat-1</version.org.apache.velocity>
@@ -1680,12 +1679,6 @@
 
             <dependency>
                 <groupId>org.apache.activemq</groupId>
-                <artifactId>artemis-amqp-protocol</artifactId>
-                <version>${version.org.apache.activemq.artemis}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-cli</artifactId>
                 <version>${version.org.apache.activemq.artemis}</version>
                 <exclusions>
@@ -1888,12 +1881,6 @@
             <dependency>
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-service-extensions</artifactId>
-                <version>${version.org.apache.activemq.artemis}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.activemq</groupId>
-                <artifactId>artemis-stomp-protocol</artifactId>
                 <version>${version.org.apache.activemq.artemis}</version>
             </dependency>
 
@@ -3451,18 +3438,6 @@
                     <exclusion>
                         <groupId>wsdl4j</groupId>
                         <artifactId>wsdl4j</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.qpid</groupId>
-                <artifactId>proton-j</artifactId>
-                <version>${version.org.apache.qpid.proton}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.bouncycastle</groupId>
-                        <artifactId>bcpkix-jdk15on</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
