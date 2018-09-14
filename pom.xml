@@ -263,7 +263,7 @@
         <version.jsoup>1.8.3.redhat-2</version.jsoup>
         <version.net.jcip>1.0.0.redhat-8</version.net.jcip>
         <version.net.shibboleth.utilities.java-support>7.1.1.redhat-2</version.net.shibboleth.utilities.java-support>
-        <version.org.apache.activemq.artemis>2.6.3.jbossorg-001</version.org.apache.activemq.artemis>
+        <version.org.apache.activemq.artemis>2.6.3.redhat-00001</version.org.apache.activemq.artemis>
         <version.org.apache.avro>1.7.6.redhat-2</version.org.apache.avro>
         <version.org.apache.cxf>3.2.5.redhat-00001</version.org.apache.cxf>
         <version.org.apache.cxf.xjcplugins>3.1.0.redhat-1</version.org.apache.cxf.xjcplugins>
@@ -1695,6 +1695,10 @@
                         <artifactId>*</artifactId>
                     </exclusion>
                     <exclusion>
+                        <groupId>org.hdrhistogram</groupId>
+                        <artifactId>HdrHistogram</artifactId>
+                    </exclusion>
+                    <exclusion>
                         <groupId>org.jboss.logging</groupId>
                         <artifactId>jboss-logging</artifactId>
                     </exclusion>
@@ -1734,10 +1738,9 @@
                         <groupId>commons-logging</groupId>
                         <artifactId>commons-logging</artifactId>
                     </exclusion>
-                    <!-- Exclude the JSR-353 implementation -->
                     <exclusion>
                         <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-json_1.0_spec</artifactId>
+                        <artifactId>*</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.johnzon</groupId>
@@ -1791,12 +1794,7 @@
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-jms_2.0_spec</artifactId>
-                    </exclusion>
-                    <!-- Exclude the JSR-353 implementation -->
-                    <exclusion>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-json_1.0_spec</artifactId>
+                        <artifactId>*</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>org.apache.johnzon</groupId>
@@ -1828,7 +1826,6 @@
                         <groupId>org.jboss.spec.javax.transaction</groupId>
                         <artifactId>jboss-transaction-api_1.1_spec</artifactId>
                     </exclusion>
-                    <!-- Exclude the JSR-353 implementation -->
                     <exclusion>
                         <groupId>org.apache.geronimo.specs</groupId>
                         <artifactId>*</artifactId>
@@ -1868,6 +1865,12 @@
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-ra</artifactId>
                 <version>${version.org.apache.activemq.artemis}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -1892,6 +1895,12 @@
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-service-extensions</artifactId>
                 <version>${version.org.apache.activemq.artemis}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
