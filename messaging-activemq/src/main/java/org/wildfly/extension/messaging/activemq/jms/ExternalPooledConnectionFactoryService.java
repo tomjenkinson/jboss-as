@@ -336,7 +336,7 @@ public class ExternalPooledConnectionFactoryService implements Service<Void> {
                     if (multiple) {
                         connectorParams.append(";");
                     }
-                    connectorParams.append(entry.getKey()).append("=").append(String.valueOf(entry.getValue()).replace(",", "\\,"));
+                    connectorParams.append(entry.getKey()).append("=").append(entry.getValue());
                     multiple = true;
                 }
             }
