@@ -28,7 +28,7 @@
   </properties>
 
   <resources>
-    <artifact name="${dom4j:dom4j}"/>
+    <artifact name="${org.dom4j:dom4j}"/>
   </resources>
 
   <dependencies>
