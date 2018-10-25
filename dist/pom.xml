@@ -59,6 +59,12 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.jboss.migration</groupId>
+            <artifactId>jboss-server-migration-eap7.2-galleon-pack</artifactId>
+            <version>${version.org.jboss.migration}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
@@ -94,6 +100,11 @@
                                     <groupId>org.wildfly.core</groupId>
                                     <artifactId>wildfly-core-galleon-pack</artifactId>
                                     <version>${version.org.wildfly.core}</version>
+                                </feature-pack>
+                                <feature-pack>
+                                    <groupId>org.jboss.migration</groupId>
+                                    <artifactId>jboss-server-migration-eap7.2-galleon-pack</artifactId>
+                                    <version>${version.org.jboss.migration}</version>
                                 </feature-pack>
                                 <feature-pack>
                                     <transitive>true</transitive>
