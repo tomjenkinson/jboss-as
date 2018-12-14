@@ -445,6 +445,10 @@ class ActiveMQServerService implements Service<ActiveMQServer> {
         return clusterCredentialSource;
     }
 
+    public Configuration getConfiguration() throws Exception {
+        return configuration.copy();
+    }
+
     private void setBridgePasswordsFromCredentialSource() {
         if (configuration != null) {
             for (BridgeConfiguration bridgeConfiguration : configuration.getBridgeConfigurations()) {
