@@ -23,14 +23,12 @@ package org.wildfly.clustering.ejb.infinispan.bean;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.wildfly.clustering.ee.Mutator;
 import org.wildfly.clustering.ejb.Bean;
 import org.wildfly.clustering.ejb.PassivationListener;
 import org.wildfly.clustering.ejb.RemoveListener;
-import org.wildfly.clustering.ejb.Time;
 import org.wildfly.clustering.ejb.infinispan.BeanEntry;
 import org.wildfly.clustering.ejb.infinispan.BeanGroup;
 import org.wildfly.clustering.ejb.infinispan.BeanRemover;
@@ -55,10 +53,6 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
     private final Duration timeout;
     private final PassivationListener<T> listener;
     private final AtomicBoolean valid = new AtomicBoolean(true);
-
-    public InfinispanBean(I id, BeanEntry<I> entry, BeanGroup<I, T> group, Mutator mutator, BeanRemover<I, T> remover, Time timeout, PassivationListener<T> listener) {
-        this(id, entry, group, mutator, remover, timeout == null ? null : Duration.ofMillis(timeout.convert(TimeUnit.MILLISECONDS)), listener);
-    }
 
     public InfinispanBean(I id, BeanEntry<I> entry, BeanGroup<I, T> group, Mutator mutator, BeanRemover<I, T> remover, Duration timeout, PassivationListener<T> listener) {
         this.id = id;

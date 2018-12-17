@@ -50,7 +50,7 @@ public class InfinispanBeanTestCase {
     private final BeanGroup<String, Object> group = mock(BeanGroup.class);
     private final Mutator mutator = mock(Mutator.class);
     private final BeanRemover<String, Object> remover = mock(BeanRemover.class);
-    private final Duration timeout = Duration.ofMinutes(1);
+    private final Duration timeout = Duration.ofMinutes(1L);
     private final PassivationListener<Object> listener = mock(PassivationListener.class);
 
     private final Bean<String, Object> bean = new InfinispanBean<>(this.id, this.entry, this.group, this.mutator, this.remover, this.timeout, this.listener);

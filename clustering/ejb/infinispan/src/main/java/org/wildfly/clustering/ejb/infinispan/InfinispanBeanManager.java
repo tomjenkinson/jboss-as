@@ -66,7 +66,6 @@ import org.wildfly.clustering.ejb.Bean;
 import org.wildfly.clustering.ejb.BeanManager;
 import org.wildfly.clustering.ejb.IdentifierFactory;
 import org.wildfly.clustering.ejb.RemoveListener;
-import org.wildfly.clustering.ejb.Time;
 import org.wildfly.clustering.ejb.infinispan.logging.InfinispanEjbLogger;
 import org.wildfly.clustering.group.Group;
 import org.wildfly.clustering.group.Node;
@@ -149,8 +148,8 @@ public class InfinispanBeanManager<I, T> implements BeanManager<I, T, Transactio
         this.affinity.start();
 
         List<Scheduler<I>> schedulers = new ArrayList<>(2);
-        Time timeout = this.expiration.getTimeout();
-        if ((timeout != null) && (timeout.getValue() >= 0)) {
+        Duration timeout = this.expiration.getTimeout();
+        if ((timeout != null) && !timeout.isNegative()) {
             schedulers.add(new BeanExpirationScheduler<>(this.batcher, new ExpiredBeanRemover<>(this.beanFactory), this.expiration));
         }
 
