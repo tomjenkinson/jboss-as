@@ -58,6 +58,7 @@ import org.wildfly.clustering.spi.NodeFactory;
  */
 public class InfinispanBeanManagerFactoryServiceConfigurator<I, T> extends SimpleServiceNameProvider implements ServiceConfigurator, InfinispanBeanManagerFactoryConfiguration {
 
+    private final String name;
     private final BeanContext context;
     private final BeanManagerFactoryServiceConfiguratorConfiguration configuration;
 
@@ -72,6 +73,7 @@ public class InfinispanBeanManagerFactoryServiceConfigurator<I, T> extends Simpl
 
     public InfinispanBeanManagerFactoryServiceConfigurator(CapabilityServiceSupport support, String name, BeanContext context, BeanManagerFactoryServiceConfiguratorConfiguration configuration) {
         super(context.getDeploymentUnitServiceName().append(context.getBeanName()).append("bean-manager"));
+        this.name = name;
         this.context = context;
         this.configuration = configuration;
         ServiceName deploymentUnitServiceName = context.getDeploymentUnitServiceName();
@@ -92,6 +94,11 @@ public class InfinispanBeanManagerFactoryServiceConfigurator<I, T> extends Simpl
         Consumer<BeanManagerFactory<I, T, TransactionBatch>> factory = builder.provides(this.getServiceName());
         Service service = Service.newInstance(factory, new InfinispanBeanManagerFactory<>(this));
         return builder.setInstance(service).setInitialMode(ServiceController.Mode.ON_DEMAND);
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override
