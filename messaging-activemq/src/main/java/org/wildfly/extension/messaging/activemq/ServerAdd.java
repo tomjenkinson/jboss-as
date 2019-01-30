@@ -178,6 +178,7 @@ class ServerAdd extends AbstractAddStepHandler {
     private static final String ARTEMIS_BROKER_CONFIG_JBDC_LOCK_RENEW_PERIOD_MILLIS = "brokerconfig.storeConfiguration.jdbcLockRenewPeriodMillis";
     private static final String ARTEMIS_BROKER_CONFIG_JBDC_LOCK_EXPIRATION_MILLIS = "brokerconfig.storeConfiguration.jdbcLockExpirationMillis";
     private static final String ARTEMIS_BROKER_CONFIG_JDBC_LOCK_ACQUISITION_TIMEOUT_MILLIS = "brokerconfig.storeConfiguration.jdbcLockAcquisitionTimeoutMillis";
+    private static final String ARTEMIS_BROKER_CONFIG_JOURNAL_FILE_OPEN_TIMEOUT = "brokerconfig.journalFileOpenTimeout";
 
     private ServerAdd() {
         super(ACTIVEMQ_SERVER_CAPABILITY, ServerDefinition.ATTRIBUTES);
@@ -496,6 +497,7 @@ class ServerAdd extends AbstractAddStepHandler {
         configuration.setJournalFileSize(JOURNAL_FILE_SIZE.resolveModelAttribute(context, model).asInt());
         configuration.setJournalMinFiles(JOURNAL_MIN_FILES.resolveModelAttribute(context, model).asInt());
         configuration.setJournalPoolFiles(JOURNAL_POOL_FILES.resolveModelAttribute(context, model).asInt());
+        setJournalFileOpenTimeout(configuration);
         configuration.setJournalSyncNonTransactional(JOURNAL_SYNC_NON_TRANSACTIONAL.resolveModelAttribute(context, model).asBoolean());
         configuration.setJournalSyncTransactional(JOURNAL_SYNC_TRANSACTIONAL.resolveModelAttribute(context, model).asBoolean());
         configuration.setLogJournalWriteRate(LOG_JOURNAL_WRITE_RATE.resolveModelAttribute(context, model).asBoolean());
@@ -730,6 +732,20 @@ class ServerAdd extends AbstractAddStepHandler {
         if (value.isDefined()) {
             amqService.getClusterCredentialSourceSupplierInjector()
                     .inject(CredentialReference.getCredentialSourceSupplier(context, credentialReferenceAttributeDefinition, model, serviceBuilder));
+        }
+    }
+
+    private static void setJournalFileOpenTimeout(Configuration configuration) {
+        if (org.wildfly.security.manager.WildFlySecurityManager.getSystemPropertiesPrivileged()
+                .containsKey(ARTEMIS_BROKER_CONFIG_JOURNAL_FILE_OPEN_TIMEOUT)) {
+            String value = org.wildfly.security.manager.WildFlySecurityManager.getSystemPropertiesPrivileged()
+                    .getProperty(ARTEMIS_BROKER_CONFIG_JOURNAL_FILE_OPEN_TIMEOUT);
+            try {
+                configuration.setJournalFileOpenTimeout(Integer.parseInt(value));
+            } catch (NumberFormatException e) {
+                MessagingLogger.ROOT_LOGGER.warnf("System property %s is not an integer value, ignoring: '%s'",
+                        ARTEMIS_BROKER_CONFIG_JOURNAL_FILE_OPEN_TIMEOUT, value);
+            }
         }
     }
 }

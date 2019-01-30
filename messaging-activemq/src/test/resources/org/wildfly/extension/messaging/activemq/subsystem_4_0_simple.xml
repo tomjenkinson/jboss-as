@@ -1,0 +1,7 @@
+<subsystem xmlns="urn:jboss:domain:messaging-activemq:4.0">
+    <server name="default">
+        <security
+                enabled="false"
+                elytron-domain="elytronDomain"/>
+    </server>
+</subsystem>
