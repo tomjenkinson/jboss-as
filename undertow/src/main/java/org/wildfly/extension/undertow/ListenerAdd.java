@@ -21,6 +21,7 @@
  */
 
 package org.wildfly.extension.undertow;
+import io.undertow.UndertowOptions;
 
 import static org.wildfly.extension.undertow.Capabilities.REF_IO_WORKER;
 import static org.wildfly.extension.undertow.Capabilities.REF_SOCKET_BINDING;
@@ -79,6 +80,13 @@ abstract class ListenerAdd extends AbstractAddStepHandler {
         final boolean secure = ListenerResourceDefinition.SECURE.resolveModelAttribute(context, model).asBoolean();
 
         OptionMap listenerOptions = OptionList.resolveOptions(context, model, ListenerResourceDefinition.LISTENER_OPTIONS);
+
+        // set undertow option to control undertow servlet dispatcher behaviour (JBEAP-16447)
+        OptionMap.Builder builder = OptionMap.builder().addAll(listenerOptions);
+        boolean preservePath = Boolean.parseBoolean(System.getProperty("io.undertow.servlet.dispatch.preserve_path_of_forward", "false"));
+        builder.set(UndertowOptions.PRESERVE_PATH_ON_FORWARD, preservePath);
+        listenerOptions = builder.getMap();
+
         OptionMap socketOptions = OptionList.resolveOptions(context, model, ListenerResourceDefinition.SOCKET_OPTIONS);
         String serverName = parent.getLastElement().getValue();
         final ListenerService service = createService(name, serverName, context, model, listenerOptions,socketOptions);
