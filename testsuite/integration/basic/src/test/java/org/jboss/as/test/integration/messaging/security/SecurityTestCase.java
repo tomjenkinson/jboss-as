@@ -68,7 +68,7 @@ public class SecurityTestCase {
             fail("must not allow to create a session with bad authentication");
         } catch (ActiveMQException e) {
             assertEquals(ActiveMQExceptionType.SECURITY_EXCEPTION, e.getType());
-            assertTrue(e.getMessage(), e.getMessage().startsWith("AMQ119031"));
+            assertTrue(e.getMessage(), e.getMessage().startsWith("AMQ229031"));
         } finally {
             if (sf != null) {
                 sf.close();
@@ -84,7 +84,7 @@ public class SecurityTestCase {
             fail("must not allow to create a session without any authentication");
         } catch (ActiveMQException e) {
             assertEquals(ActiveMQExceptionType.SECURITY_EXCEPTION, e.getType());
-            assertTrue(e.getMessage(), e.getMessage().startsWith("AMQ119031"));
+            assertTrue(e.getMessage(), e.getMessage().startsWith("AMQ229031"));
         } finally {
             if (sf != null) {
                 sf.close();
@@ -100,7 +100,7 @@ public class SecurityTestCase {
             fail("must not allow to create a session with the default cluster user credentials");
         } catch (ActiveMQException e) {
             assertEquals(ActiveMQExceptionType.CLUSTER_SECURITY_EXCEPTION, e.getType());
-            assertTrue(e.getMessage(), e.getMessage().startsWith("AMQ119099"));
+            assertTrue(e.getMessage(), e.getMessage().startsWith("AMQ229099"));
         } finally {
             if (sf != null) {
                 sf.close();
@@ -157,7 +157,7 @@ public class SecurityTestCase {
         } catch (ActiveMQException e) {
             assertEquals(ActiveMQExceptionType.SECURITY_EXCEPTION, e.getType());
             // Code of exception has changed in Artemis 2.x
-            assertTrue(e.getMessage().startsWith("AMQ119213"));
+            assertTrue(e.getMessage().startsWith("AMQ229213"));
             assertTrue(e.getMessage().contains(CheckType.CREATE_DURABLE_QUEUE.toString()));
         } finally {
             if (session != null) {
