@@ -28,8 +28,10 @@ package org.wildfly.extension.messaging.activemq;
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_ADDR;
 import static org.wildfly.extension.messaging.activemq.CommonAttributes.DURABLE;
 import static org.wildfly.extension.messaging.activemq.CommonAttributes.FILTER;
+import static org.wildfly.extension.messaging.activemq.QueueDefinition.DEFAULT_ROUTING_TYPE;
 
 import java.util.List;
+import org.apache.activemq.artemis.api.core.RoutingType;
 
 import org.apache.activemq.artemis.core.config.Configuration;
 import org.apache.activemq.artemis.core.config.CoreQueueConfiguration;
@@ -46,6 +48,9 @@ import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceController.Mode;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.ServiceRegistry;
+
+
+import java.util.Locale;
 
 /**
  * Core queue add update.
@@ -75,7 +80,7 @@ public class QueueAdd extends AbstractAddStepHandler {
             PathAddress address = PathAddress.pathAddress(operation.get(OP_ADDR));
             final String queueName = address.getLastElement().getValue();
             final CoreQueueConfiguration queueConfiguration = createCoreQueueConfiguration(context, queueName, model);
-            final QueueService service = new QueueService(queueConfiguration, false);
+            final QueueService service = new QueueService(queueConfiguration, false, true);
             final ServiceName queueServiceName = MessagingServices.getQueueBaseServiceName(serviceName).append(queueName);
             context.getServiceTarget().addService(queueServiceName, service)
                     .addDependency(ActiveMQActivationService.getServiceName(serviceName))
@@ -99,10 +104,16 @@ public class QueueAdd extends AbstractAddStepHandler {
 
     private static CoreQueueConfiguration createCoreQueueConfiguration(final OperationContext context, String name, ModelNode model) throws OperationFailedException {
         final String queueAddress = QueueDefinition.ADDRESS.resolveModelAttribute(context, model).asString();
-        final ModelNode filterNode =  FILTER.resolveModelAttribute(context, model);
-        final String filter = filterNode.isDefined() ? filterNode.asString() : null;
+        final String filter = FILTER.resolveModelAttribute(context, model).asStringOrNull();
         final boolean durable = DURABLE.resolveModelAttribute(context, model).asBoolean();
-
+        if (DEFAULT_ROUTING_TYPE != null) {
+            return new CoreQueueConfiguration()
+                    .setAddress(queueAddress)
+                    .setName(name)
+                    .setFilterString(filter)
+                    .setDurable(durable)
+                    .setRoutingType(RoutingType.valueOf(DEFAULT_ROUTING_TYPE.toUpperCase(Locale.ENGLISH)));
+        }
         return new CoreQueueConfiguration()
                 .setAddress(queueAddress)
                 .setName(name)
