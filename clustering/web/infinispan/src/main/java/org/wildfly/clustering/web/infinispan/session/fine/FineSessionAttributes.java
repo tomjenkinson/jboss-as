@@ -91,7 +91,12 @@ public class FineSessionAttributes<V> extends FineImmutableSessionAttributes<V> 
             // Add a passive mutation to prevent any subsequent mutable getAttribute(...) from triggering a redundant mutation on close.
             this.mutations.put(name, Mutator.PASSIVE);
         } else {
-            this.mutations.remove(name);
+            // If the object is mutable, we need to indicate trigger a mutation on close
+            if (SessionAttributeImmutability.INSTANCE.test(attribute)) {
+                this.mutations.remove(name);
+            } else {
+                this.mutations.put(name, new CacheEntryMutator<>(this.cache, key, value));
+            }
         }
         return result;
     }
