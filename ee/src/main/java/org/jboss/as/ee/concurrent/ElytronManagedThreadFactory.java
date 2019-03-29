@@ -20,17 +20,17 @@
  * 2110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-package org.jboss.as.ee.concurrent.service;
+package org.jboss.as.ee.concurrent;
 
 import org.glassfish.enterprise.concurrent.AbstractManagedThread;
 import org.glassfish.enterprise.concurrent.ContextServiceImpl;
 import org.glassfish.enterprise.concurrent.ManagedThreadFactoryImpl;
 import org.glassfish.enterprise.concurrent.spi.ContextHandle;
-import org.wildfly.security.auth.server.SecurityDomain;
 import org.wildfly.security.auth.server.SecurityIdentity;
 import org.wildfly.security.manager.WildFlySecurityManager;
 
 import javax.enterprise.concurrent.ManagedThreadFactory;
+import java.security.AccessControlContext;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
@@ -41,51 +41,47 @@ import java.security.PrivilegedAction;
  */
 public class ElytronManagedThreadFactory extends ManagedThreadFactoryImpl {
 
-    private static final ClassLoader CLASSLOADER = ElytronManagedThreadFactory.class.getClassLoader();
+    /**
+     * the factory's ACC
+     */
+    private final AccessControlContext accessControlContext;
 
     public ElytronManagedThreadFactory(String name, ContextServiceImpl contextService, int priority) {
         super(name, contextService, priority);
+        this.accessControlContext = AccessController.getContext();
     }
 
-    protected AbstractManagedThread createThread(final Runnable r, final ContextHandle contextHandleForSetup) {
-        boolean checking = WildFlySecurityManager.isChecking();
-        SecurityDomain domain = checking ?
-                AccessController.doPrivileged((PrivilegedAction<SecurityDomain>) SecurityDomain::getCurrent) :
-                SecurityDomain.getCurrent();
-        SecurityIdentity identity = domain == null ? null : domain.getCurrentSecurityIdentity();
-        final ClassLoader tccl = WildFlySecurityManager.getCurrentContextClassLoaderPrivileged();
-        try {
-            WildFlySecurityManager.setCurrentContextClassLoaderPrivileged(CLASSLOADER);
-            if (checking) {
-                return AccessController.doPrivileged((PrivilegedAction<ElytronManagedThread>)
-                        () -> new ElytronManagedThread(r, contextHandleForSetup, identity)
-                );
-            } else {
-                return new ElytronManagedThread(r, contextHandleForSetup, identity);
-            }
-        } finally {
-            WildFlySecurityManager.setCurrentContextClassLoaderPrivileged(tccl);
+    protected AbstractManagedThread createThread(Runnable r, final ContextHandle contextHandleForSetup) {
+        if (contextHandleForSetup != null) {
+            // app thread, do identity wrap
+            r = SecurityIdentityUtils.doIdentityWrap(r);
         }
+        // use the factory's acc as privileged, otherwise the new thread inherits current thread's acc
+        final AbstractManagedThread t = AccessController.doPrivileged(new CreateThreadAction(r, contextHandleForSetup), accessControlContext);
+        // reset thread classloader to prevent leaks
+        if (!WildFlySecurityManager.isChecking()) {
+            t.setContextClassLoader(null);
+        } else {
+            AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
+                t.setContextClassLoader(null);
+                return null;
+            });
+        }
+        return t;
     }
 
-    public class ElytronManagedThread extends ManagedThread {
+    private final class CreateThreadAction implements PrivilegedAction<AbstractManagedThread> {
+        private final Runnable r;
+        private final ContextHandle contextHandleForSetup;
 
-        final SecurityIdentity securityIdentity;
-
-        ElytronManagedThread(Runnable target, ContextHandle contextHandleForSetup, SecurityIdentity securityIdentity) {
-            super(target, contextHandleForSetup);
-            this.securityIdentity = securityIdentity;
+        private CreateThreadAction(Runnable r, ContextHandle contextHandleForSetup) {
+            this.r = r;
+            this.contextHandleForSetup = contextHandleForSetup;
         }
 
         @Override
-        public void run() {
-            if (securityIdentity != null) {
-                securityIdentity.runAs(super::run);
-            } else {
-                super.run();
-            }
+        public AbstractManagedThread run() {
+            return ElytronManagedThreadFactory.super.createThread(r, contextHandleForSetup);
         }
-
     }
-
 }
