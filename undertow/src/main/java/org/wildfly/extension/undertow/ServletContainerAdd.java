@@ -91,6 +91,7 @@ final class ServletContainerAdd extends AbstractBoottimeAddStepHandler {
         final ModelNode fileCacheTtlNode = ServletContainerDefinition.FILE_CACHE_TIME_TO_LIVE.resolveModelAttribute(context, model);
         final Integer fileCacheTimeToLive = fileCacheTtlNode.isDefined()  ? fileCacheTtlNode.asInt() : null;
         final int defaultCookieVersion = ServletContainerDefinition.DEFAULT_COOKIE_VERSION.resolveModelAttribute(context, model).asInt();
+        final boolean preservePathOnForward = Boolean.parseBoolean(System.getProperty("io.undertow.servlet.dispatch.preserve_path_of_forward", "false"));
 
         Boolean directoryListingEnabled = null;
         if(model.hasDefined(Constants.DIRECTORY_LISTING)) {
@@ -137,7 +138,8 @@ final class ServletContainerAdd extends AbstractBoottimeAddStepHandler {
                 disableCachingForSecuredPages, webSocketInfo != null, webSocketInfo != null && webSocketInfo.isDispatchToWorker(),
                 webSocketInfo != null && webSocketInfo.isPerMessageDeflate(), webSocketInfo == null ? -1 : webSocketInfo.getDeflaterLevel(),
                 mimeMappings,
-                welcomeFiles, directoryListingEnabled, proactiveAuth, sessionIdLength, authenticationMechanisms, maxSessions, crawlerSessionManagerConfig, disableFileWatchService, disableSessionIdReususe, fileCacheMetadataSize, fileCacheMaxFileSize, fileCacheTimeToLive, defaultCookieVersion);
+                welcomeFiles, directoryListingEnabled, proactiveAuth, sessionIdLength, authenticationMechanisms, maxSessions, crawlerSessionManagerConfig, disableFileWatchService, disableSessionIdReususe, fileCacheMetadataSize, fileCacheMaxFileSize, fileCacheTimeToLive, defaultCookieVersion,
+                preservePathOnForward);
 
 
         final CapabilityServiceBuilder<ServletContainerService> builder = context.getCapabilityServiceTarget()
