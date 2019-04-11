@@ -21,7 +21,8 @@
  */
 package org.wildfly.clustering.ejb.infinispan.bean;
 
-import java.util.Date;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -51,11 +52,15 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
     private final BeanGroup<I, T> group;
     private final Mutator mutator;
     private final BeanRemover<I, T> remover;
-    private final Time timeout;
+    private final Duration timeout;
     private final PassivationListener<T> listener;
     private final AtomicBoolean valid = new AtomicBoolean(true);
 
     public InfinispanBean(I id, BeanEntry<I> entry, BeanGroup<I, T> group, Mutator mutator, BeanRemover<I, T> remover, Time timeout, PassivationListener<T> listener) {
+        this(id, entry, group, mutator, remover, Duration.ofMillis(timeout.convert(TimeUnit.MILLISECONDS)), listener);
+    }
+
+    public InfinispanBean(I id, BeanEntry<I> entry, BeanGroup<I, T> group, Mutator mutator, BeanRemover<I, T> remover, Duration timeout, PassivationListener<T> listener) {
         this.id = id;
         this.entry = entry;
         this.group = group;
@@ -77,10 +82,10 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
 
     @Override
     public boolean isExpired() {
-        if (this.timeout == null) return false;
-        Date lastAccessedTime = this.entry.getLastAccessedTime();
-        long timeout = this.timeout.convert(TimeUnit.MILLISECONDS);
-        return (lastAccessedTime != null) && (timeout > 0) ? ((System.currentTimeMillis() - lastAccessedTime.getTime()) >= timeout) : false;
+        if ((this.timeout == null) || this.timeout.isNegative()) return false;
+        if (this.timeout.isZero()) return true;
+        Instant lastAccessedTime = this.entry.getLastAccessedTime();
+        return (lastAccessedTime != null) ? !lastAccessedTime.plus(this.timeout).isAfter(Instant.now()) : false;
     }
 
     @Override
@@ -111,8 +116,8 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
     @Override
     public void close() {
         if (this.valid.get()) {
-            Date lastAccessedTime = this.entry.getLastAccessedTime();
-            this.entry.setLastAccessedTime(new Date());
+            Instant lastAccessedTime = this.entry.getLastAccessedTime();
+            this.entry.setLastAccessedTime(Instant.now());
             if (lastAccessedTime != null) {
                 this.mutator.mutate();
             }
