@@ -24,7 +24,7 @@ package org.wildfly.clustering.ejb.infinispan.bean;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.util.Date;
+import java.time.Instant;
 
 import org.jboss.ejb.client.SessionID;
 import org.kohsuke.MetaInfServices;
@@ -41,8 +41,8 @@ public class InfinispanBeanEntryExternalizer implements Externalizer<InfinispanB
     public void writeObject(ObjectOutput output, InfinispanBeanEntry<SessionID> entry) throws IOException {
         output.writeUTF(entry.getBeanName());
         SessionIDSerializer.INSTANCE.write(output, entry.getGroupId());
-        Date lastAccessedTime = entry.getLastAccessedTime();
-        output.writeLong((lastAccessedTime != null) ? lastAccessedTime.getTime() : 0);
+        Instant lastAccessedTime = entry.getLastAccessedTime();
+        output.writeLong((lastAccessedTime != null) ? lastAccessedTime.toEpochMilli() : 0);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class InfinispanBeanEntryExternalizer implements Externalizer<InfinispanB
         InfinispanBeanEntry<SessionID> entry = new InfinispanBeanEntry<>(input.readUTF(), SessionIDSerializer.INSTANCE.read(input));
         long time = input.readLong();
         if (time > 0) {
-            entry.setLastAccessedTime(new Date(time));
+            entry.setLastAccessedTime(Instant.ofEpochMilli(time));
         }
         return entry;
     }
