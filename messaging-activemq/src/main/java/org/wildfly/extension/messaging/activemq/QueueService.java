@@ -22,9 +22,9 @@
 
 package org.wildfly.extension.messaging.activemq;
 
-import org.apache.activemq.artemis.api.core.SimpleString;
 import org.apache.activemq.artemis.core.config.CoreQueueConfiguration;
 import org.apache.activemq.artemis.core.server.ActiveMQServer;
+import org.apache.activemq.artemis.api.core.SimpleString;
 import org.jboss.msc.service.Service;
 import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
@@ -42,25 +42,38 @@ class QueueService implements Service<Void> {
     private final InjectedValue<ActiveMQServer> activeMQServer = new InjectedValue<ActiveMQServer>();
     private final CoreQueueConfiguration queueConfiguration;
     private final boolean temporary;
+    private final boolean createQueue;
 
-    public QueueService(final CoreQueueConfiguration queueConfiguration, final boolean temporary) {
+    public QueueService(final CoreQueueConfiguration queueConfiguration, final boolean temporary, final boolean createQueue) {
         if(queueConfiguration == null) {
             throw MessagingLogger.ROOT_LOGGER.nullVar("queueConfiguration");
         }
         this.queueConfiguration = queueConfiguration;
         this.temporary = temporary;
+        this.createQueue = createQueue;
     }
 
     /** {@inheritDoc} */
     @Override
     public synchronized void start(StartContext context) throws StartException {
-        try {
-            final ActiveMQServer server = this.activeMQServer.getValue();
-            server.deployQueue(new SimpleString(queueConfiguration.getAddress()), new SimpleString(queueConfiguration.getName()),
-                    SimpleString.toSimpleString(queueConfiguration.getFilterString()), queueConfiguration.isDurable(),
-                    temporary);
-        } catch (Exception e) {
-            throw new StartException(e);
+        if (createQueue) {
+            try {
+                final ActiveMQServer server = this.activeMQServer.getValue();
+                MessagingLogger.ROOT_LOGGER.debugf("Deploying queue on server %s with address: %s ,  name: %s, filter: %s ands durable: %s, temporary: %s",
+                        server.getNodeID(), new SimpleString(queueConfiguration.getAddress()), new SimpleString(queueConfiguration.getName()),
+                        SimpleString.toSimpleString(queueConfiguration.getFilterString()), queueConfiguration.isDurable(), temporary);
+                final SimpleString resourceName = new SimpleString(queueConfiguration.getName());
+                final SimpleString address = new SimpleString(queueConfiguration.getAddress());
+                final SimpleString filterString = SimpleString.toSimpleString(queueConfiguration.getFilterString());
+                server.createQueue(address,
+                        queueConfiguration.getRoutingType(),
+                        resourceName,
+                        filterString,
+                        queueConfiguration.isDurable(),
+                        temporary);
+            } catch (Exception e) {
+                throw new StartException(e);
+            }
         }
     }
 
