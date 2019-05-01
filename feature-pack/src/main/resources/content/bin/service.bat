@@ -5,7 +5,7 @@ REM  Red Hat JBoss EAP 7 Service Script for Windows
 REM    It has to reside in %JBOSS_HOME%\bin
 REM    It is expecting that prunsrv.exe reside in one of:
 REM      %JBOSS_HOME%\bin
-REM      %JBOSS_HOME%\..\jbcs-jsvc-1.0\sbin
+REM      %JBOSS_HOME%\..\jbcs-jsvc-*\sbin
 REM
 REM  v9 2016-02-16 customize for WildFly, fix working on paths with spaces (Tomaz Cerar)
 REM  v8 2016-01-20 customize for EAP 7 (Petr Sakar)
@@ -97,13 +97,27 @@ if not exist "%JBOSS_HOME%\jboss-modules.jar" (
 )
 
 set PRUNSRV=
-if exist "%JBOSS_HOME%\..\jbcs-jsvc-1.0\sbin\prunsrv.exe" (
-  set PRUNSRV="%JBOSS_HOME%\..\jbcs-jsvc-1.0\sbin\prunsrv.exe"
-) else if exist "%JBOSS_HOME%\bin\prunsrv.exe" (
-  set PRUNSRV="%JBOSS_HOME%\bin\prunsrv.exe"
-) else (
-  echo Please install native utilities into expected location %JBOSS_HOME%\..\jbcs-jsvc-1.0
-  goto cmdEnd
+rem Attempt to find prunsrv.exe under the same root directory that contains JBOSS_HOME.
+rem Note that only the last match will be used. This *typically* means the most recent version will be matched.
+rem Also note that only jbcs-jsvc-* will be used as a pattern, so jbcs-jsvc-1.0 and jbcs-jsvc-1.1 will match.
+for /d %%a in ( "%JBOSS_HOME%\..\jbcs-jsvc-*" ) do (
+  if "%DEBUG%" == "1" (
+    echo FOUND "%%~fa"
+  )
+  
+  if exist "%%~fa\sbin\prunsrv.exe" (
+    set "PRUNSRV=%%~fa\sbin\prunsrv.exe"
+  )
+)
+
+rem prunsrv.exe was not found above, so try to find it under JBOSS_HOME\bin.
+if "%PRUNSRV%" == "" (
+  if exist "%JBOSS_HOME%\bin\prunsrv.exe" (
+    set PRUNSRV="%JBOSS_HOME%\bin\prunsrv.exe"
+  ) else (
+    echo Please install native utilities into expected location %JBOSS_HOME%\..\jbcs-jsvc-1.1
+    goto cmdEnd
+  )
 )
 
 if "%DEBUG%" == "1" (
