@@ -378,7 +378,7 @@
         <version.org.syslog4j>0.9.30</version.org.syslog4j>
         <version.org.wildfly.arquillian>2.1.1.Final</version.org.wildfly.arquillian>
         <version.org.wildfly.common>1.4.0.Final-redhat-1</version.org.wildfly.common>
-        <version.org.wildfly.core>6.0.12.Final-redhat-00001</version.org.wildfly.core>
+        <version.org.wildfly.core>6.0.14.Final-redhat-00001</version.org.wildfly.core>
         <version.org.wildfly.extras.creaper>1.6.1</version.org.wildfly.extras.creaper>
         <version.org.wildfly.http-client>1.0.15.Final-redhat-00001</version.org.wildfly.http-client>
         <version.org.wildfly.naming-client>1.0.10.Final-redhat-00001</version.org.wildfly.naming-client>
