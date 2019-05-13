@@ -21,7 +21,9 @@
  */
 package org.jboss.as.weld.deployment.processors;
 
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import javax.enterprise.inject.spi.BeanManager;
 
@@ -50,7 +52,6 @@ import org.jboss.as.weld.deployment.WeldAttachments;
 import org.jboss.as.weld.services.BeanManagerService;
 import org.jboss.as.weld.util.Utils;
 import org.jboss.msc.service.ServiceName;
-import org.jboss.msc.service.ServiceRegistry;
 import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.value.ImmediateValue;
 import org.jboss.msc.value.InjectedValue;
@@ -71,9 +72,6 @@ public class WeldBeanManagerServiceProcessor implements DeploymentUnitProcessor 
         if (!WeldDeploymentMarker.isPartOfWeldDeployment(topLevelDeployment)) {
             return;
         }
-
-        final Collection<ServiceName> dependencies = deploymentUnit.getAttachment(Attachments.JNDI_DEPENDENCIES);
-
 
         BeanDeploymentArchiveImpl rootBda = deploymentUnit
                 .getAttachment(WeldAttachments.DEPLOYMENT_ROOT_BEAN_DEPLOYMENT_ARCHIVE);
@@ -106,7 +104,7 @@ public class WeldBeanManagerServiceProcessor implements DeploymentUnitProcessor 
         if (DeploymentTypeMarker.isType(DeploymentType.WAR, deploymentUnit) || deploymentUnit.getName().endsWith(".jar")) {
             // bind the bean manager to JNDI
             final ServiceName moduleContextServiceName = ContextNames.contextServiceNameOfModule(moduleDescription.getApplicationName(), moduleDescription.getModuleName());
-            bindBeanManager(serviceTarget, beanManagerServiceName, moduleContextServiceName, dependencies, phaseContext.getServiceRegistry());
+            bindBeanManager(deploymentUnit, serviceTarget, beanManagerServiceName, moduleContextServiceName);
         }
 
 
@@ -114,15 +112,14 @@ public class WeldBeanManagerServiceProcessor implements DeploymentUnitProcessor 
         for (ComponentDescription component : moduleDescription.getComponentDescriptions()) {
             if (component.getNamingMode() == ComponentNamingMode.CREATE) {
                 final ServiceName compContextServiceName = ContextNames.contextServiceNameOfComponent(moduleDescription.getApplicationName(), moduleDescription.getModuleName(), component.getComponentName());
-                bindBeanManager(serviceTarget, beanManagerServiceName, compContextServiceName, dependencies, phaseContext.getServiceRegistry());
+                bindBeanManager(deploymentUnit, serviceTarget, beanManagerServiceName, compContextServiceName);
             }
         }
         deploymentUnit.addToAttachmentList(Attachments.SETUP_ACTIONS, new WeldContextSetup());
     }
 
-    private void bindBeanManager(ServiceTarget serviceTarget, ServiceName beanManagerServiceName, ServiceName contextServiceName, final Collection<ServiceName> dependencies, final ServiceRegistry serviceRegistry) {
+    private void bindBeanManager(DeploymentUnit deploymentUnit, ServiceTarget serviceTarget, ServiceName beanManagerServiceName, ServiceName contextServiceName) {
         final ServiceName beanManagerBindingServiceName = contextServiceName.append("BeanManager");
-        dependencies.add(beanManagerBindingServiceName);
         BinderService beanManagerBindingService = new BinderService("BeanManager");
         final BeanManagerManagedReferenceFactory referenceFactory = new BeanManagerManagedReferenceFactory();
         serviceTarget.addService(beanManagerBindingServiceName, beanManagerBindingService)
@@ -130,6 +127,12 @@ public class WeldBeanManagerServiceProcessor implements DeploymentUnitProcessor 
                 .addDependency(contextServiceName, ServiceBasedNamingStore.class, beanManagerBindingService.getNamingStoreInjector())
                 .addDependency(beanManagerServiceName, BeanManager.class, referenceFactory.beanManager)
                 .install();
+        final Map<ServiceName, Set<ServiceName>> jndiComponentDependencies = deploymentUnit.getAttachment(Attachments.COMPONENT_JNDI_DEPENDENCIES);
+        Set<ServiceName> jndiDependencies = jndiComponentDependencies.get(contextServiceName);
+        if (jndiDependencies == null) {
+            jndiComponentDependencies.put(contextServiceName, jndiDependencies = new HashSet<>());
+        }
+        jndiDependencies.add(beanManagerBindingServiceName);
     }
 
     @Override
