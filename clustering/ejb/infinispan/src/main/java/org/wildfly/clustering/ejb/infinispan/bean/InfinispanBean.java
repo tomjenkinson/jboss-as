@@ -57,7 +57,7 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
     private final AtomicBoolean valid = new AtomicBoolean(true);
 
     public InfinispanBean(I id, BeanEntry<I> entry, BeanGroup<I, T> group, Mutator mutator, BeanRemover<I, T> remover, Time timeout, PassivationListener<T> listener) {
-        this(id, entry, group, mutator, remover, Duration.ofMillis(timeout.convert(TimeUnit.MILLISECONDS)), listener);
+        this(id, entry, group, mutator, remover, timeout == null ? null : Duration.ofMillis(timeout.convert(TimeUnit.MILLISECONDS)), listener);
     }
 
     public InfinispanBean(I id, BeanEntry<I> entry, BeanGroup<I, T> group, Mutator mutator, BeanRemover<I, T> remover, Duration timeout, PassivationListener<T> listener) {
