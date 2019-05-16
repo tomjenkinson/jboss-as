@@ -28,8 +28,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-import java.time.Duration;
-import java.time.Instant;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -95,11 +94,11 @@ public class InfinispanBeanTestCase {
         when(this.entry.getLastAccessedTime()).thenReturn(null);
         Assert.assertFalse(this.bean.isExpired());
 
-        Instant now = Instant.now();
-        when(this.entry.getLastAccessedTime()).thenReturn(now);
+        long now = System.currentTimeMillis();
+        when(this.entry.getLastAccessedTime()).thenReturn(new Date(now));
         Assert.assertFalse(this.bean.isExpired());
 
-        when(this.entry.getLastAccessedTime()).thenReturn(now.minus(Duration.ofMillis(this.timeout.convert(TimeUnit.MILLISECONDS))));
+        when(this.entry.getLastAccessedTime()).thenReturn(new Date(now - this.timeout.convert(TimeUnit.MILLISECONDS) - 1));
         Assert.assertTrue(this.bean.isExpired());
     }
 
@@ -125,18 +124,18 @@ public class InfinispanBeanTestCase {
 
         this.bean.close();
 
-        verify(this.entry).setLastAccessedTime(ArgumentMatchers.<Instant>any());
+        verify(this.entry).setLastAccessedTime(ArgumentMatchers.<Date>any());
         verify(this.mutator, never()).mutate();
         verify(this.group, never()).close();
 
         reset(this.entry, this.mutator, this.group);
 
-        when(this.entry.getLastAccessedTime()).thenReturn(Instant.now());
+        when(this.entry.getLastAccessedTime()).thenReturn(new Date());
         when(this.group.isCloseable()).thenReturn(true);
 
         this.bean.close();
 
-        verify(this.entry).setLastAccessedTime(ArgumentMatchers.<Instant>any());
+        verify(this.entry).setLastAccessedTime(ArgumentMatchers.<Date>any());
         verify(this.mutator).mutate();
         verify(this.group).close();
     }

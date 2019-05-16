@@ -29,11 +29,5 @@ import org.wildfly.clustering.ejb.RemoveListener;
  * @author Paul Ferraro
  */
 public interface BeanRemover<K, V> {
-    /**
-     * Removes the specified bean, triggering the specified listener
-     * @param id a bean identifier
-     * @param listener a removal listener
-     * @return true, if the bean was (or was already) removed, false otherwise
-     */
-    boolean remove(K id, RemoveListener<V> listener);
+    void remove(K id, RemoveListener<V> listener);
 }

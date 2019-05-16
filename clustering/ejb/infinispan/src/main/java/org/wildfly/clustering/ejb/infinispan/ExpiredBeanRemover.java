@@ -43,17 +43,15 @@ public class ExpiredBeanRemover<I, T> implements BeanRemover<I, T> {
     }
 
     @Override
-    public boolean remove(I id, RemoveListener<T> listener) {
+    public void remove(I id, RemoveListener<T> listener) {
         BeanEntry<I> entry = this.factory.findValue(id);
         @SuppressWarnings("resource")
         Bean<I, T> bean = (entry != null) ? this.factory.createBean(id, entry) : null;
         if (bean != null) {
             if (bean.isExpired()) {
                 InfinispanEjbLogger.ROOT_LOGGER.tracef("Removing expired bean %s", id);
-                return this.factory.remove(id, listener);
+                this.factory.remove(id, listener);
             }
-            return false;
         }
-        return true;
     }
 }

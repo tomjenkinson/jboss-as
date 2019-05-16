@@ -23,7 +23,7 @@ package org.wildfly.clustering.ejb.infinispan.bean;
 
 import org.wildfly.clustering.ejb.infinispan.BeanEntry;
 
-import java.time.Instant;
+import java.util.Date;
 
 /**
  * The cache entry for a bean.
@@ -36,7 +36,7 @@ public class InfinispanBeanEntry<I> implements BeanEntry<I> {
 
     private final String beanName;
     private final I groupId;
-    private volatile Instant lastAccessedTime;
+    private volatile Date lastAccessedTime;
 
     public InfinispanBeanEntry(String beanName, I groupId) {
         this.beanName = beanName;
@@ -54,12 +54,12 @@ public class InfinispanBeanEntry<I> implements BeanEntry<I> {
     }
 
     @Override
-    public Instant getLastAccessedTime() {
+    public Date getLastAccessedTime() {
         return this.lastAccessedTime;
     }
 
     @Override
-    public void setLastAccessedTime(Instant time) {
+    public void setLastAccessedTime(Date time) {
         this.lastAccessedTime = time;
     }
 }

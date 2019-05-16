@@ -21,7 +21,7 @@
  */
 package org.wildfly.clustering.ejb.infinispan;
 
-import java.time.Instant;
+import java.util.Date;
 
 /**
  * The cache entry for a bean.
@@ -35,6 +35,6 @@ public interface BeanEntry<G> {
     G getGroupId();
     String getBeanName();
 
-    Instant getLastAccessedTime();
-    void setLastAccessedTime(Instant time);
+    Date getLastAccessedTime();
+    void setLastAccessedTime(Date time);
 }

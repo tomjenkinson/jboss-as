@@ -21,8 +21,7 @@
  */
 package org.wildfly.clustering.ejb.infinispan.bean;
 
-import java.time.Duration;
-import java.time.Instant;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -52,7 +51,7 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
     private final BeanGroup<I, T> group;
     private final Mutator mutator;
     private final BeanRemover<I, T> remover;
-    private final Duration timeout;
+    private final Time timeout;
     private final PassivationListener<T> listener;
     private final AtomicBoolean valid = new AtomicBoolean(true);
 
@@ -62,7 +61,7 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
         this.group = group;
         this.mutator = mutator;
         this.remover = remover;
-        this.timeout = (timeout != null) ? ((timeout.getValue() != 0) ? Duration.ofMillis(timeout.convert(TimeUnit.MILLISECONDS)) : Duration.ZERO) : null;
+        this.timeout = timeout;
         this.listener = listener;
     }
 
@@ -78,10 +77,10 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
 
     @Override
     public boolean isExpired() {
-        if ((this.timeout == null) || this.timeout.isNegative()) return false;
-        if (this.timeout.isZero()) return true;
-        Instant lastAccessedTime = this.entry.getLastAccessedTime();
-        return (lastAccessedTime != null) ? !lastAccessedTime.plus(this.timeout).isAfter(Instant.now()) : false;
+        if (this.timeout == null) return false;
+        Date lastAccessedTime = this.entry.getLastAccessedTime();
+        long timeout = this.timeout.convert(TimeUnit.MILLISECONDS);
+        return (lastAccessedTime != null) && (timeout > 0) ? ((System.currentTimeMillis() - lastAccessedTime.getTime()) >= timeout) : false;
     }
 
     @Override
@@ -112,8 +111,8 @@ public class InfinispanBean<I, T> implements Bean<I, T> {
     @Override
     public void close() {
         if (this.valid.get()) {
-            Instant lastAccessedTime = this.entry.getLastAccessedTime();
-            this.entry.setLastAccessedTime(Instant.now());
+            Date lastAccessedTime = this.entry.getLastAccessedTime();
+            this.entry.setLastAccessedTime(new Date());
             if (lastAccessedTime != null) {
                 this.mutator.mutate();
             }
