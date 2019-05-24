@@ -27,6 +27,13 @@
         <jbossas.project.dir>${jbossas.ts.dir}/..</jbossas.project.dir>
     </properties>
 
+    <dependencies>
+        <dependency>
+			<groupId>org.jboss.ejb3</groupId>
+			<artifactId>jboss-ejb3-ext-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
     <build>
         <testResources>
             <testResource>
