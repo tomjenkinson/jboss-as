@@ -428,6 +428,7 @@
             <artifactId>wildfly-arquillian-protocol-jmx</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>

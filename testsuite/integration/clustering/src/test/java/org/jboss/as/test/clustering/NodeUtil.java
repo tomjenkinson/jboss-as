@@ -93,10 +93,6 @@ public final class NodeUtil {
         }
     }
 
-    public static boolean isStarted(ContainerController controller, String container) {
-        return controller.isStarted(container);
-    }
-
     public static void stop(WildFlyContainerController controller, int timeout, String... containers) {
         for (String container : containers) {
             stop(controller, timeout, container);
