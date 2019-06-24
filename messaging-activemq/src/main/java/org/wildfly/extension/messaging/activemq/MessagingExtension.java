@@ -86,6 +86,9 @@ import org.wildfly.extension.messaging.activemq.jms.bridge.JMSBridgeDefinition;
 import static org.wildfly.extension.messaging.activemq.CommonAttributes.EXTERNAL_JMS_QUEUE;
 import static org.wildfly.extension.messaging.activemq.CommonAttributes.EXTERNAL_JMS_TOPIC;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Domain extension that integrates Apache ActiveMQ 6.
  *
@@ -173,6 +176,19 @@ public class MessagingExtension implements Extension {
     private static final ModelVersion CURRENT_MODEL_VERSION = VERSION_4_0_0;
 
     private static final MessagingSubsystemParser_4_0 CURRENT_PARSER = new MessagingSubsystemParser_4_0();
+
+    // ARTEMIS-2273 introduced audit logging at a info level which is rather verbose. We need to use static loggers
+    // to ensure the log levels are set to WARN and there is a strong reference to the loggers. This hack will likely
+    // be removed in the future.
+    private static final Logger BASE_AUDIT_LOGGER;
+    private static final Logger MESSAGE_AUDIT_LOGGER;
+
+    static {
+        BASE_AUDIT_LOGGER = Logger.getLogger("org.apache.activemq.audit.base");
+        BASE_AUDIT_LOGGER.setLevel(Level.WARNING);
+        MESSAGE_AUDIT_LOGGER = Logger.getLogger("org.apache.activemq.audit.message");
+        MESSAGE_AUDIT_LOGGER.setLevel(Level.WARNING);
+    }
 
 
     public static ResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
