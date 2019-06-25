@@ -1847,6 +1847,30 @@
 
         <dependency>
             <groupId>org.apache.activemq</groupId>
+            <artifactId>libartemis-native-32</artifactId>
+            <type>so</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>libartemis-native-64</artifactId>
+            <type>so</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
             <artifactId>artemis-ra</artifactId>
             <exclusions>
                 <exclusion>
