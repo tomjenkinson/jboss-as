@@ -2034,7 +2034,19 @@
 
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-native</artifactId>
+            <artifactId>activemq-artemis-native</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>libartemis-native-32</artifactId>
+            <type>so</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>libartemis-native-64</artifactId>
+            <type>so</type>
         </dependency>
 
         <dependency>
@@ -2390,7 +2402,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>wildfly-ormtransformer</artifactId>
