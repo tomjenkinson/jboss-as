@@ -31,7 +31,7 @@
     <groupId>org.jboss.universe.producer</groupId>
     <artifactId>jboss-eap-producers</artifactId>
     <!-- Keep this in sync with version.org.jboss.universe.producer.jboss-eap-producers and do not use -SNAPSHOT until https://issues.jboss.org/browse/GAL-291 gets resolved -->
-    <version>7.3.0.CDxx</version>
+    <version>7.3.0.CD18</version>
     <packaging>pom</packaging>
 
     <name>EAP: Galleon Feature-pack Producers</name>
