@@ -166,7 +166,7 @@
         <org.jboss.model.test.cache.root>[pom.xml,testsuite]</org.jboss.model.test.cache.root>
         <!-- Location relative to root that will be used for the cached legacy classpaths used by subsystem-test and core-model-test-->
         <org.jboss.model.test.classpath.cache>target/model-test-classpath-cache</org.jboss.model.test.classpath.cache>
-        <org.jboss.model.test.maven.repository.urls>${maven.repository.product.url},https://maven.repository.redhat.com/ga/,${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/developer/</org.jboss.model.test.maven.repository.urls>
+        <org.jboss.model.test.maven.repository.urls>${maven.repository.protocol}://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/,https://maven.repository.redhat.com/ga/,${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/developer/</org.jboss.model.test.maven.repository.urls>
 
         <!-- Properties that drive the names of various directories produced by and used in the build -->
         <server.output.dir.prefix>jboss-eap</server.output.dir.prefix>
@@ -178,9 +178,6 @@
              interferes with that. Use 'https' for builds that will be released
              to non-snapshot public maven repos -->
         <maven.repository.protocol>https</maven.repository.protocol>
-        <!-- The full remote maven repo URL; can be overridden via -D for special use cases -->
-        <maven.repository.url>${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/public/</maven.repository.url>
-        <maven.repository.product.url>${maven.repository.protocol}://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</maven.repository.product.url>
 
         <!-- Surefire args -->
         <surefire.extra.args></surefire.extra.args>
@@ -6690,7 +6687,7 @@
         <repository>
             <id>jboss-eap-7.2-product-repository</id>
             <name>JBoss EAP Product Repository</name>
-            <url>${maven.repository.product.url}</url>
+            <url>https://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</url>
             <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
@@ -6704,7 +6701,7 @@
         <repository>
             <id>jboss-public-repository-group</id>
             <name>JBoss Public Repository Group</name>
-            <url>${maven.repository.url}</url>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
             <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
@@ -6721,7 +6718,7 @@
         <pluginRepository>
             <id>jboss-eap-7.2-product-repository</id>
             <name>JBoss EAP Product Repository</name>
-            <url>${maven.repository.product.url}</url>
+            <url>https://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</url>
             <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
@@ -6735,7 +6732,7 @@
         <pluginRepository>
             <id>jboss-public-repository-group</id>
             <name>JBoss Public Repository Group</name>
-            <url>${maven.repository.url}</url>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -7680,5 +7677,50 @@
                 </repository>
             </repositories>
         </profile>
+
+        <profile>
+            <id>http</id>
+            <activation>
+                <property>
+                    <name>maven.repository.protocol</name>
+                    <value>http</value>
+                </property>
+            </activation>
+            <repositories>
+                <!-- keep this repository the first -->
+                <repository>
+                    <id>jboss-eap-7.2-product-repository</id>
+                    <name>JBoss EAP Product Repository</name>
+                    <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jboss-eap-7.2-product-repository</id>
+                    <name>JBoss EAP Product Repository</name>
+                    <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+
     </profiles>
 </project>
