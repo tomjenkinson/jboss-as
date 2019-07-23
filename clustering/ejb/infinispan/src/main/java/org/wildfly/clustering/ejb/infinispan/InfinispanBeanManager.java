@@ -85,7 +85,6 @@ import org.wildfly.security.manager.WildFlySecurityManager;
  *
  * @author Paul Ferraro
  *
- * @param <G> the group identifier type
  * @param <I> the bean identifier type
  * @param <T> the bean type
  */
