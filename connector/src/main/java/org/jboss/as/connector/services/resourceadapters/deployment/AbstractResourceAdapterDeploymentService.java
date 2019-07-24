@@ -28,7 +28,6 @@ import static org.jboss.as.connector.logging.ConnectorLogger.DEPLOYMENT_CONNECTO
 
 import javax.naming.Reference;
 import javax.resource.spi.ResourceAdapter;
-import javax.security.auth.Subject;
 import javax.transaction.TransactionManager;
 import java.io.File;
 import java.io.PrintWriter;
@@ -633,23 +632,7 @@ public abstract class AbstractResourceAdapterDeploymentService {
             } else if (securityDomain == null || securityDomain.trim().equals("")) {
                 return null;
             } else {
-                return new PicketBoxSubjectFactory(subjectFactory.getValue()){
-
-                    @Override
-                    public Subject createSubject(final String sd) {
-                        ServerSecurityManager sm = secManager.getOptionalValue();
-                        if (sm != null) {
-                            sm.push(sd);
-                        }
-                        try {
-                            return super.createSubject(sd);
-                        } finally {
-                            if (sm != null) {
-                                sm.pop();
-                            }
-                        }
-                    }
-                };
+                return new PicketBoxSubjectFactory(subjectFactory.getValue());
             }
         }
 
