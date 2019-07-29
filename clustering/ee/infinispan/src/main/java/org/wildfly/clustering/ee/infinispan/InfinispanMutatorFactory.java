@@ -3,7 +3,6 @@ package org.wildfly.clustering.ee.infinispan;
 import org.infinispan.Cache;
 import org.wildfly.clustering.ee.Mutator;
 import org.wildfly.clustering.ee.MutatorFactory;
-import org.wildfly.clustering.ee.cache.CacheProperties;
 
 /**
  * Factory for creating {@link Mutator} objects for an Infinispan cache.
