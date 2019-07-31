@@ -467,6 +467,9 @@ class ServerAdd extends AbstractAddStepHandler {
 
         configuration.setName(serverName);
 
+        //To avoid the automatic reloading of the logging.properties by the broker.
+        configuration.setConfigurationFileRefreshPeriod(-1);
+
         configuration.setEnabledAsyncConnectionExecution(ASYNC_CONNECTION_EXECUTION_ENABLED.resolveModelAttribute(context, model).asBoolean());
 
         configuration.setClusterPassword(CLUSTER_PASSWORD.resolveModelAttribute(context, model).asString());
