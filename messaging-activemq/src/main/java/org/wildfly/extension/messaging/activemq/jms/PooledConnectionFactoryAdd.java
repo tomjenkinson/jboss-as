@@ -167,6 +167,18 @@ public class PooledConnectionFactoryAdd extends AbstractAddStepHandler {
         return SUBSYSTEM.equals(context.getCurrentAddress().getParent().getLastElement().getKey());
     }
 
+    static String getTxSupport(final ModelNode resolvedModel) {
+        String txType = resolvedModel.get(ConnectionFactoryAttributes.Pooled.TRANSACTION.getName()).asStringOrNull();
+        switch (txType) {
+            case LOCAL:
+                return LOCAL_TX;
+            case NONE:
+                return NO_TX;
+            default:
+                return XA_TX;
+        }
+    }
+
     static String getDiscoveryGroup(final ModelNode model) {
         if(model.hasDefined(Common.DISCOVERY_GROUP.getName())) {
             return model.get(Common.DISCOVERY_GROUP.getName()).asString();
