@@ -52,7 +52,7 @@ public class DatabasePersistenceWebFailoverTestCase extends AbstractWebFailoverT
     private static final String DEPLOYMENT_NAME = DatabasePersistenceWebFailoverTestCase.class.getSimpleName() + ".war";
 
     public DatabasePersistenceWebFailoverTestCase() {
-        super(DEPLOYMENT_NAME, CacheMode.INVALIDATION_SYNC, TransactionMode.NON_TRANSACTIONAL);
+        super(DEPLOYMENT_NAME, CacheMode.INVALIDATION_SYNC, TransactionMode.TRANSACTIONAL);
     }
 
     @Deployment(name = DEPLOYMENT_1, managed = false, testable = false)
