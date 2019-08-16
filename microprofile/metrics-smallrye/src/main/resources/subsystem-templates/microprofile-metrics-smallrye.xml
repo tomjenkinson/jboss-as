@@ -6,5 +6,5 @@
     <subsystem xmlns="urn:wildfly:microprofile-metrics-smallrye:2.0"
                security-enabled="false"
                exposed-subsystems="*"
-               prefix="${wildfly.metrics.prefix:wildfly}" />
+               prefix="${wildfly.metrics.prefix:jboss}" />
 </config>
