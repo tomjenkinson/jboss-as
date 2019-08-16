@@ -23,6 +23,7 @@ package org.wildfly.clustering.web.infinispan.session;
 
 import org.infinispan.Cache;
 import org.infinispan.remoting.transport.Address;
+import org.wildfly.clustering.infinispan.spi.distribution.Key;
 import org.wildfly.clustering.registry.Registry;
 import org.wildfly.clustering.spi.NodeFactory;
 
@@ -32,7 +33,7 @@ import org.wildfly.clustering.spi.NodeFactory;
  */
 public interface InfinispanRouteLocatorConfiguration {
 
-    Cache<String, ?> getCache();
+    Cache<Key<String>, ?> getCache();
 
     Registry<String, Void> getRegistry();
 

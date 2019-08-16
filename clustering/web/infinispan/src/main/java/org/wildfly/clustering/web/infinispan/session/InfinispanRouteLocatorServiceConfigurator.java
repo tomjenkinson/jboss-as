@@ -35,6 +35,7 @@ import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.ServiceTarget;
 import org.wildfly.clustering.infinispan.spi.InfinispanCacheRequirement;
+import org.wildfly.clustering.infinispan.spi.distribution.Key;
 import org.wildfly.clustering.registry.Registry;
 import org.wildfly.clustering.service.CompositeDependency;
 import org.wildfly.clustering.service.FunctionalService;
@@ -58,7 +59,7 @@ public class InfinispanRouteLocatorServiceConfigurator extends SimpleServiceName
 
     private volatile SupplierDependency<NodeFactory<Address>> factory;
     private volatile SupplierDependency<Registry<String, Void>> registry;
-    private volatile SupplierDependency<Cache<String, ?>> cache;
+    private volatile SupplierDependency<Cache<Key<String>, ?>> cache;
 
     public InfinispanRouteLocatorServiceConfigurator(String serverName, String deploymentName) {
         super(ServiceName.JBOSS.append("clustering", "web", "locator", deploymentName));
@@ -88,7 +89,7 @@ public class InfinispanRouteLocatorServiceConfigurator extends SimpleServiceName
     }
 
     @Override
-    public Cache<String, ?> getCache() {
+    public Cache<Key<String>, ?> getCache() {
         return this.cache.get();
     }
 

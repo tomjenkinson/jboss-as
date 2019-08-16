@@ -52,7 +52,7 @@ public class HotRodPersistenceWebFailoverTestCase extends AbstractWebFailoverTes
     private static final String DEPLOYMENT_NAME = HotRodPersistenceWebFailoverTestCase.class.getSimpleName() + ".war";
 
     public HotRodPersistenceWebFailoverTestCase() {
-        super(DEPLOYMENT_NAME, CacheMode.INVALIDATION_SYNC, TransactionMode.NON_TRANSACTIONAL);
+        super(DEPLOYMENT_NAME, CacheMode.INVALIDATION_SYNC, TransactionMode.TRANSACTIONAL);
     }
 
     @Deployment(name = DEPLOYMENT_1, managed = false, testable = false)
