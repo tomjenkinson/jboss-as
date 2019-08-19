@@ -61,6 +61,12 @@
                     <classifier>api</classifier>
                     <scope>test</scope>
                 </dependency>
+                <!-- ExampleDS used in tests -->
+                <dependency>
+                    <groupId>javax.persistence</groupId>
+                    <artifactId>javax.persistence-api</artifactId>
+                    <scope>test</scope>
+                </dependency>
             </dependencies>
 
             <build>
@@ -139,6 +145,7 @@
                             <!-- Tests to execute. -->
                             <includes>
                                 <include>org/jboss/as/test/xts/**/*TestCase.java</include>
+                                <include>org/jboss/as/test/txbridge/**/*TestCase.java</include>
                             </includes>
                             <systemPropertyVariables combine.children="append">
                                 <arquillian.launch>xts-servers</arquillian.launch>
