@@ -34,8 +34,10 @@ import org.infinispan.notifications.Listener;
 import org.infinispan.notifications.cachelistener.annotation.CacheEntriesEvicted;
 import org.infinispan.notifications.cachelistener.event.CacheEntriesEvictedEvent;
 import org.wildfly.clustering.ee.Mutator;
+import org.wildfly.clustering.ee.MutatorFactory;
 import org.wildfly.clustering.ee.infinispan.CacheEntryMutator;
 import org.wildfly.clustering.ee.infinispan.CacheProperties;
+import org.wildfly.clustering.ee.infinispan.InfinispanMutatorFactory;
 import org.wildfly.clustering.infinispan.spi.distribution.Key;
 import org.wildfly.clustering.marshalling.spi.InvalidSerializedFormException;
 import org.wildfly.clustering.marshalling.spi.Marshaller;
@@ -58,12 +60,14 @@ public class FineSessionAttributesFactory<V> implements SessionAttributesFactory
     private final Cache<SessionAttributeKey, V> attributeCache;
     private final Marshaller<Object, V> marshaller;
     private final CacheProperties properties;
+    private final MutatorFactory<SessionAttributeKey, V> mutatorFactory;
 
     public FineSessionAttributesFactory(Cache<SessionAttributeNamesKey, SessionAttributeNamesEntry> namesCache, Cache<SessionAttributeKey, V> attributeCache, Marshaller<Object, V> marshaller, CacheProperties properties) {
         this.namesCache = namesCache;
         this.attributeCache = attributeCache;
         this.marshaller = marshaller;
         this.properties = properties;
+        this.mutatorFactory = new InfinispanMutatorFactory<>(attributeCache, properties);
     }
 
     @Override
@@ -110,7 +114,7 @@ public class FineSessionAttributesFactory<V> implements SessionAttributesFactory
     public SessionAttributes createSessionAttributes(String id, SessionAttributeNamesEntry entry) {
         SessionAttributeNamesKey key = new SessionAttributeNamesKey(id);
         Mutator mutator = this.properties.isTransactional() && this.namesCache.getAdvancedCache().getCacheEntry(key).isCreated() ? Mutator.PASSIVE : new CacheEntryMutator<>(this.namesCache, key, entry);
-        return new FineSessionAttributes<>(id, entry.getSequence(), entry.getNames(), mutator, this.attributeCache, this.marshaller, this.properties);
+        return new FineSessionAttributes<>(id, entry.getSequence(), entry.getNames(), mutator, this.attributeCache, this.marshaller, this.mutatorFactory, this.properties);
     }
 
     @Override

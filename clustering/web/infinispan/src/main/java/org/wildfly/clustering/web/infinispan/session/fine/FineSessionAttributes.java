@@ -31,7 +31,7 @@ import org.infinispan.commons.marshall.NotSerializableException;
 import org.infinispan.context.Flag;
 import org.wildfly.clustering.ee.infinispan.CacheProperties;
 import org.wildfly.clustering.ee.Mutator;
-import org.wildfly.clustering.ee.infinispan.CacheEntryMutator;
+import org.wildfly.clustering.ee.MutatorFactory;
 import org.wildfly.clustering.marshalling.spi.Marshaller;
 import org.wildfly.clustering.web.infinispan.session.SessionAttributes;
 import org.wildfly.clustering.web.session.SessionAttributeImmutability;
@@ -48,8 +48,9 @@ public class FineSessionAttributes<V> extends FineImmutableSessionAttributes<V> 
     private final Map<String, Mutator> mutations = new ConcurrentHashMap<>();
     private final Marshaller<Object, V> marshaller;
     private final CacheProperties properties;
+    private final MutatorFactory<SessionAttributeKey, V> mutatorFactory;
 
-    public FineSessionAttributes(String id, AtomicInteger sequence, ConcurrentMap<String, Integer> names, Mutator namesMutator, Cache<SessionAttributeKey, V> cache, Marshaller<Object, V> marshaller, CacheProperties properties) {
+    public FineSessionAttributes(String id, AtomicInteger sequence, ConcurrentMap<String, Integer> names, Mutator namesMutator, Cache<SessionAttributeKey, V> cache, Marshaller<Object, V> marshaller, MutatorFactory<SessionAttributeKey, V> mutatorFactory, CacheProperties properties) {
         super(id, names, cache, marshaller);
         this.sequence = sequence;
         this.names = names;
@@ -57,6 +58,7 @@ public class FineSessionAttributes<V> extends FineImmutableSessionAttributes<V> 
         this.cache = cache;
         this.marshaller = marshaller;
         this.properties = properties;
+        this.mutatorFactory = mutatorFactory;
     }
 
     @Override
@@ -95,7 +97,7 @@ public class FineSessionAttributes<V> extends FineImmutableSessionAttributes<V> 
             if (SessionAttributeImmutability.INSTANCE.test(attribute)) {
                 this.mutations.remove(name);
             } else {
-                this.mutations.put(name, new CacheEntryMutator<>(this.cache, key, value));
+                this.mutations.put(name, this.mutatorFactory.createMutator(key, value));
             }
         }
         return result;
@@ -111,7 +113,7 @@ public class FineSessionAttributes<V> extends FineImmutableSessionAttributes<V> 
         if (attribute != null) {
             // If the object is mutable, we need to trigger a mutation on close
             if (!SessionAttributeImmutability.INSTANCE.test(attribute)) {
-                this.mutations.putIfAbsent(name, new CacheEntryMutator<>(this.cache, key, value));
+                this.mutations.putIfAbsent(name, this.mutatorFactory.createMutator(key, value));
             }
         }
         return attribute;
