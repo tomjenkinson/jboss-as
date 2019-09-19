@@ -67,6 +67,8 @@
         <module>ee</module>
         <module>ee-security</module>
         <module>ejb3</module>
+        <module>galleon-producers</module>
+        <module>galleon-universe</module>
         <module>feature-pack</module>
         <module>galleon-pack</module>
         <module>iiop-openjdk</module>
@@ -207,8 +209,20 @@
         <version.help.plugin>2.2</version.help.plugin>
         <version.jacoco.plugin>0.8.2</version.jacoco.plugin><!-- TODO property does not follow verion.groupId format -->
         <version.org.jboss.galleon>4.0.4.Final</version.org.jboss.galleon>
-        <version.org.jboss.universe.producer.wildfly-producers>1.0.2.Final</version.org.jboss.universe.producer.wildfly-producers>
-        <version.org.jboss.universe.community-universe>1.0.2.Final</version.org.jboss.universe.community-universe>
+        <!--
+             The following two variables could have been removed using the project.version as version for the EAP Producers and Universe maven artifacts.
+             However, Galleon does not allow us creating an Universe with produces with -SNAPSHOT qualifier, so we have to define the version "manually" here.
+             See https://issues.jboss.org/browse/GAL-291
+             We should not use variables to define the version in a maven artifact, a maven warning is logged in that case. In order to
+             avoid the warning, we have to keep in sync manually the values of these properties with the version value defined in org.jboss.universe.producer:jboss-eap-producers
+             and in org.jboss.universe:product-universe.
+             Once Galleon allows us define a -SNAPSHOT producers in a Universe, we can get the rid of those properties replacing them by ${project.version}
+             Initially, since we do not need a productized version of org.jboss.universe.producer:jboss-eap-producers and org.jboss.universe:product-universe,
+             that means no -redhat suffix, so we will use ${product.release.version} to set their initial values.
+         -->
+        <version.org.jboss.universe.producer.jboss-eap-producers>${product.release.version}</version.org.jboss.universe.producer.jboss-eap-producers>
+        <version.org.jboss.universe.product-universe>${product.release.version}</version.org.jboss.universe.product-universe>
+
         <version.org.wildfly.build-tools>1.2.12.Final</version.org.wildfly.build-tools>
         <version.org.wildfly.checkstyle-config>1.0.8.Final</version.org.wildfly.checkstyle-config>
         <version.org.wildfly.common>1.5.1.Final</version.org.wildfly.common>
@@ -8440,6 +8454,22 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>wildfly-ormtransformer</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.universe.producer</groupId>
+                <artifactId>jboss-eap-producers</artifactId>
+                <version>${version.org.jboss.universe.producer.jboss-eap-producers}</version>
+                <scope>runtime</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.universe</groupId>
+                <artifactId>product-universe</artifactId>
+                <version>${version.org.jboss.universe.product-universe}</version>
+                <scope>runtime</scope>
+                <type>pom</type>
             </dependency>
 
         </dependencies>

@@ -42,6 +42,20 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
+            <groupId>org.jboss.universe.producer</groupId>
+            <artifactId>jboss-eap-producers</artifactId>
+            <scope>runtime</scope>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.universe</groupId>
+            <artifactId>product-universe</artifactId>
+            <scope>runtime</scope>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>wildfly-galleon-pack</artifactId>
             <type>pom</type>
@@ -185,6 +199,9 @@
     <profiles>
         <profile>
             <id>release</id>
+            <properties>
+                <org.wildfly.galleon-plugins.offline>true</org.wildfly.galleon-plugins.offline>
+            </properties>
             <activation>
                 <property>
                     <name>release</name>
@@ -204,7 +221,7 @@
                                 </goals>
                                 <phase>package</phase>
                                 <configuration>
-                                    <offline>true</offline>
+                                    <offline>${org.wildfly.galleon-plugins.offline}</offline>
                                     <fpGroupId>${project.groupId}</fpGroupId>
                                     <fpArtifactId>wildfly-galleon-pack</fpArtifactId>
                                     <fpVersion>${project.version}</fpVersion>
