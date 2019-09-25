@@ -3184,5 +3184,8 @@ public interface EjbLogger extends BasicLogger {
     @Message(id = 510, value = "@RunAs annotation is required when using @RunAsPrincipal on class %s")
     void missingRunAsAnnotation(String className);
 
+    @LogMessage(level = WARN)
+    @Message(id = 515, value = "[EJB3.2 spec, section 4.9.2] Singleton session beans are not allowed to implement 'javax.ejb.SessionBean' interface. This interface on bean '%s' is going to be ignored and should be removed.")
+    void singletonCantImplementSessionBean(String className);
 
 }
