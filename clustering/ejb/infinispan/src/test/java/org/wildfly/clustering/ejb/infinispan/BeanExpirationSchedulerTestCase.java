@@ -23,93 +23,160 @@ package org.wildfly.clustering.ejb.infinispan;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.same;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.wildfly.clustering.ee.Batcher;
 import org.wildfly.clustering.ee.infinispan.TransactionBatch;
 import org.wildfly.clustering.ejb.RemoveListener;
-import org.wildfly.clustering.ejb.Time;
 
 public class BeanExpirationSchedulerTestCase {
     @Test
     public void testImmortal() throws InterruptedException {
         Batcher<TransactionBatch> batcher = mock(Batcher.class);
-        BeanRemover<String, Object> remover = mock(BeanRemover.class);
+        BeanFactory<String, Object> factory = mock(BeanFactory.class);
         ExpirationConfiguration<Object> config = mock(ExpirationConfiguration.class);
         RemoveListener<Object> listener = mock(RemoveListener.class);
+        BeanEntry<String> entry = mock(BeanEntry.class);
         String beanId = "immortal";
 
         when(config.getExecutor()).thenReturn(Executors.newSingleThreadScheduledExecutor());
 
         // Fun fact: the EJB specification allows a timeout value of 0, so only negative timeouts are treated as immortal
-        when(config.getTimeout()).thenReturn(new Time(-1, TimeUnit.SECONDS));
+        when(config.getTimeout()).thenReturn(Duration.ofMinutes(-1L));
         when(config.getRemoveListener()).thenReturn(listener);
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now());
 
-        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, remover, config)) {
-            scheduler.schedule(beanId);
+        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, factory, config)) {
+            scheduler.schedule(beanId, entry);
 
             Thread.sleep(1000);
         }
 
         verify(batcher, never()).createBatch();
-        verify(remover, never()).remove(beanId, listener);
+        verify(factory, never()).remove(beanId, listener);
     }
 
     @Test
     public void testExpire() throws InterruptedException {
         Batcher<TransactionBatch> batcher = mock(Batcher.class);
         TransactionBatch batch = mock(TransactionBatch.class);
-        BeanRemover<String, Object> remover = mock(BeanRemover.class);
+        BeanFactory<String, Object> factory = mock(BeanFactory.class);
         ExpirationConfiguration<Object> config = mock(ExpirationConfiguration.class);
         RemoveListener<Object> listener = mock(RemoveListener.class);
+        BeanEntry<String> entry = mock(BeanEntry.class);
         String beanId = "expiring";
+        Duration timeout = Duration.ofMillis(10L);
 
         when(config.getExecutor()).thenReturn(Executors.newSingleThreadScheduledExecutor());
         when(batcher.createBatch()).thenReturn(batch);
 
-        when(config.getTimeout()).thenReturn(new Time(1, TimeUnit.MILLISECONDS));
+        when(config.getTimeout()).thenReturn(timeout);
         when(config.getRemoveListener()).thenReturn(listener);
-        when(remover.remove(beanId, listener)).thenReturn(true);
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now());
+        when(factory.findValue(beanId)).thenReturn(entry);
+        when(entry.isExpired(same(timeout))).thenReturn(true);
 
-        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, remover, config)) {
-            scheduler.schedule(beanId);
+        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, factory, config)) {
+            scheduler.schedule(beanId, entry);
 
             Thread.sleep(1000);
         }
 
-        verify(remover).remove(beanId, listener);
+        verify(factory).remove(beanId, listener);
+        verify(batch).close();
+    }
+
+    @Test
+    public void testNotFound() throws InterruptedException {
+        Batcher<TransactionBatch> batcher = mock(Batcher.class);
+        TransactionBatch batch = mock(TransactionBatch.class);
+        BeanFactory<String, Object> factory = mock(BeanFactory.class);
+        ExpirationConfiguration<Object> config = mock(ExpirationConfiguration.class);
+        RemoveListener<Object> listener = mock(RemoveListener.class);
+        BeanEntry<String> entry = mock(BeanEntry.class);
+        String beanId = "expiring";
+        Duration timeout = Duration.ofMillis(10L);
+
+        when(config.getExecutor()).thenReturn(Executors.newSingleThreadScheduledExecutor());
+        when(batcher.createBatch()).thenReturn(batch);
+
+        when(config.getTimeout()).thenReturn(timeout);
+        when(config.getRemoveListener()).thenReturn(listener);
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now());
+        when(factory.findValue(beanId)).thenReturn(null);
+
+        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, factory, config)) {
+            scheduler.schedule(beanId, entry);
+
+            Thread.sleep(1000);
+        }
+
+        verify(factory, never()).remove(beanId, listener);
+        verify(batch).close();
+    }
+
+    @Test
+    public void testNotExpired() throws InterruptedException {
+        Batcher<TransactionBatch> batcher = mock(Batcher.class);
+        TransactionBatch batch = mock(TransactionBatch.class);
+        BeanFactory<String, Object> factory = mock(BeanFactory.class);
+        ExpirationConfiguration<Object> config = mock(ExpirationConfiguration.class);
+        RemoveListener<Object> listener = mock(RemoveListener.class);
+        BeanEntry<String> entry = mock(BeanEntry.class);
+        String beanId = "expiring";
+        Duration timeout = Duration.ofMillis(10L);
+
+        when(config.getExecutor()).thenReturn(Executors.newSingleThreadScheduledExecutor());
+        when(batcher.createBatch()).thenReturn(batch);
+
+        when(config.getTimeout()).thenReturn(Duration.ofMillis(1L));
+        when(config.getRemoveListener()).thenReturn(listener);
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now(), Instant.now().plus(Duration.ofMinutes(1)));
+        when(factory.findValue(beanId)).thenReturn(entry);
+        when(entry.isExpired(same(timeout))).thenReturn(false);
+
+        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, factory, config)) {
+            scheduler.schedule(beanId, entry);
+
+            Thread.sleep(1000);
+        }
+
+        verify(factory, never()).remove(beanId, listener);
         verify(batch).close();
     }
 
     @Test
     public void testCancel() throws InterruptedException {
         Batcher<TransactionBatch> batcher = mock(Batcher.class);
-        BeanRemover<String, Object> remover = mock(BeanRemover.class);
+        BeanFactory<String, Object> factory = mock(BeanFactory.class);
         ExpirationConfiguration<Object> config = mock(ExpirationConfiguration.class);
         RemoveListener<Object> listener = mock(RemoveListener.class);
+        BeanEntry<String> entry = mock(BeanEntry.class);
         String beanId = "canceled";
+        Duration timeout = Duration.ofMinutes(1L);
 
         when(config.getExecutor()).thenReturn(Executors.newSingleThreadScheduledExecutor());
 
-        when(config.getTimeout()).thenReturn(new Time(1, TimeUnit.MINUTES));
+        when(config.getTimeout()).thenReturn(timeout);
         when(config.getRemoveListener()).thenReturn(listener);
-        when(remover.remove(beanId, listener)).thenReturn(true);
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now());
 
-        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, remover, config)) {
-            scheduler.schedule(beanId);
+        try (Scheduler<String> scheduler = new BeanExpirationScheduler<>(batcher, factory, config)) {
+            scheduler.schedule(beanId, entry);
 
             Thread.sleep(1000);
 
             scheduler.cancel(beanId);
-            scheduler.schedule(beanId);
         }
 
-        verify(remover, never()).remove(beanId, listener);
+        verify(factory, never()).remove(beanId, listener);
         verify(batcher, never()).createBatch();
     }
 }

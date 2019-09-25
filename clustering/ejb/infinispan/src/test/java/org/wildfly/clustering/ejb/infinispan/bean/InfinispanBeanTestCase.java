@@ -21,6 +21,7 @@
  */
 package org.wildfly.clustering.ejb.infinispan.bean;
 
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
@@ -50,7 +51,7 @@ public class InfinispanBeanTestCase {
     private final BeanGroup<String, Object> group = mock(BeanGroup.class);
     private final Mutator mutator = mock(Mutator.class);
     private final BeanRemover<String, Object> remover = mock(BeanRemover.class);
-    private final Duration timeout = Duration.ofMinutes(1);
+    private final Duration timeout = Duration.ofMinutes(1L);
     private final PassivationListener<Object> listener = mock(PassivationListener.class);
 
     private final Bean<String, Object> bean = new InfinispanBean<>(this.id, this.entry, this.group, this.mutator, this.remover, this.timeout, this.listener);
@@ -90,15 +91,28 @@ public class InfinispanBeanTestCase {
 
     @Test
     public void isExpired() {
-        when(this.entry.getLastAccessedTime()).thenReturn(null);
-        Assert.assertFalse(this.bean.isExpired());
-
-        Instant now = Instant.now();
-        when(this.entry.getLastAccessedTime()).thenReturn(now);
-        Assert.assertFalse(this.bean.isExpired());
-
-        when(this.entry.getLastAccessedTime()).thenReturn(now.minus(this.timeout));
+        when(this.entry.isExpired(this.timeout)).thenReturn(true);
         Assert.assertTrue(this.bean.isExpired());
+
+        when(this.entry.isExpired(this.timeout)).thenReturn(false);
+        Assert.assertFalse(this.bean.isExpired());
+
+        // Validate BeanEntry.isExpired(...)
+        BeanEntry<String> entry = mock(BeanEntry.class);
+        when(entry.isExpired(any())).thenCallRealMethod();
+
+        Assert.assertFalse(entry.isExpired(null));
+        Assert.assertFalse(entry.isExpired(Duration.ofMillis(-1L)));
+        Assert.assertTrue(entry.isExpired(Duration.ZERO));
+
+        when(entry.getLastAccessedTime()).thenReturn(null);
+        Assert.assertFalse(entry.isExpired(this.timeout));
+
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now());
+        Assert.assertFalse(entry.isExpired(this.timeout));
+
+        when(entry.getLastAccessedTime()).thenReturn(Instant.now().minus(this.timeout));
+        Assert.assertTrue(entry.isExpired(this.timeout));
     }
 
     @Test

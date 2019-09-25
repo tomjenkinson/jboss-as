@@ -1,6 +1,6 @@
 /*
  * JBoss, Home of Professional Open Source.
- * Copyright 2014, Red Hat, Inc., and individual contributors
+ * Copyright 2019, Red Hat, Inc., and individual contributors
  * as indicated by the @author tags. See the copyright.txt file in the
  * distribution for a full listing of individual contributors.
  *
@@ -24,27 +24,24 @@ package org.wildfly.clustering.ejb.infinispan;
 import org.wildfly.clustering.dispatcher.Command;
 
 /**
- * Command that schedules a session.
- * @author Paul Ferraro
+ * Command that temporarily holds off the sheduling of a session, preventing
+ * the cost of a cancellation. The scheduling must be canceled or rescheduled at
+ * the near future.
+ * @author Flavia Rainone
  */
-public class ScheduleSchedulerCommand<I> implements Command<Void, Scheduler<I>> {
-    private static final long serialVersionUID = -2606847692331278614L;
+public class PrepareReschedulingSchedulerCommand<I> implements Command<Void, Scheduler<I>> {
+    private static final long serialVersionUID = 788517670339502640L;
 
     private final I beanId;
-    private transient ImmutableBeanEntry<I> entry = null;
 
-    public ScheduleSchedulerCommand(I beanId, ImmutableBeanEntry<I> entry) {
+    public PrepareReschedulingSchedulerCommand(I beanId) {
         this.beanId = beanId;
-        this.entry = entry;
     }
 
     @Override
     public Void execute(Scheduler<I> scheduler) {
-        if (this.entry != null) {
-            scheduler.schedule(this.beanId, this.entry);
-        } else {
-            scheduler.schedule(this.beanId);
-        }
+        scheduler.prepareRescheduling(beanId);
         return null;
+
     }
 }
