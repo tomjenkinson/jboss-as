@@ -2002,6 +2002,10 @@
                         <groupId>javax.xml.bind</groupId>
                         <artifactId>jaxb-api</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.jboss.spec.javax.xml.bind</groupId>
+                        <artifactId>jboss-jaxb-api_2.2_spec</artifactId>
+                    </exclusion>
                     <!-- TODO remove this exclusion once this supports Jakarta Activation -->
                     <!-- Superceded by com.sun.activation:jakarta.activation -->
                     <exclusion>
