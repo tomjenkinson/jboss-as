@@ -282,7 +282,7 @@
         <version.io.opentracing.concurrent>0.2.1.redhat-00001</version.io.opentracing.concurrent>
         <version.io.opentracing.interceptors>0.0.4</version.io.opentracing.interceptors>
         <version.io.opentracing.jaxrs2>0.4.1.redhat-00006</version.io.opentracing.jaxrs2>
-        <version.io.opentracing.tracerresolver>0.1.5</version.io.opentracing.tracerresolver>
+        <version.io.opentracing.tracerresolver>0.1.5.redhat-00001</version.io.opentracing.tracerresolver>
         <version.io.opentracing.servlet>0.2.3.redhat-00001</version.io.opentracing.servlet>
         <version.io.reactivex.rxjava>2.2.2</version.io.reactivex.rxjava>
         <version.io.rest-assured>3.0.0</version.io.rest-assured>
