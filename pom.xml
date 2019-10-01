@@ -279,7 +279,7 @@
         <version.io.jaegertracing>0.34.0.redhat-00001</version.io.jaegertracing>
         <version.io.netty>4.1.34.Final-redhat-00002</version.io.netty>
         <version.io.opentracing>0.31.0.redhat-00008</version.io.opentracing>
-        <version.io.opentracing.concurrent>0.2.1</version.io.opentracing.concurrent>
+        <version.io.opentracing.concurrent>0.2.1.redhat-00001</version.io.opentracing.concurrent>
         <version.io.opentracing.interceptors>0.0.4</version.io.opentracing.interceptors>
         <version.io.opentracing.jaxrs2>0.4.1</version.io.opentracing.jaxrs2>
         <version.io.opentracing.tracerresolver>0.1.5</version.io.opentracing.tracerresolver>
