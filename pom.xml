@@ -297,7 +297,7 @@
         <version.jakarta.mail>1.6.4.redhat-00001</version.jakarta.mail>
         <version.jakarta.persistence>2.2.3.redhat-00001</version.jakarta.persistence>
         <version.jakarta.security.enterprise>1.0.2.redhat-00001</version.jakarta.security.enterprise>
-        <version.jakarta.validation>2.0.2</version.jakarta.validation>
+        <version.jakarta.validation>2.0.2.redhat-00001</version.jakarta.validation>
         <version.javax.jws.jsr181-api>1.0-MR1</version.javax.jws.jsr181-api>
         <version.jaxen>1.1.6</version.jaxen>
         <version.jboss.jaxbintros>1.0.3.GA</version.jboss.jaxbintros>
