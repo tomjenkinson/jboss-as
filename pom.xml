@@ -300,7 +300,7 @@
         <version.jakarta.validation>2.0.2.redhat-00001</version.jakarta.validation>
         <version.javax.jws.jsr181-api>1.0.0.MR1-redhat-8</version.javax.jws.jsr181-api>
         <version.jaxen>1.1.6.redhat-2</version.jaxen>
-        <version.jboss.jaxbintros>1.0.3.GA</version.jboss.jaxbintros>
+        <version.jboss.jaxbintros>1.0.3.GA-redhat-00001</version.jboss.jaxbintros>
         <version.joda-time>2.9.7</version.joda-time>
         <version.jsoup>1.8.3</version.jsoup>
         <version.net.jcip>1.0</version.net.jcip>
