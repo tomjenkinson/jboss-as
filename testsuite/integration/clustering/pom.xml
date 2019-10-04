@@ -46,6 +46,12 @@
         <test-group>org/jboss/as/test/clustering/cluster</test-group>
         <!-- Needs to kept inline with what the infinispan-server-feature-pack requires -->
         <version.org.jboss.infinispan-wildfly>14.0.1.Final</version.org.jboss.infinispan-wildfly>
+        <!-- We use the community version here because this server is based on WildFly/JBoss EAP. This means an older
+             version of wildfly-core-eap may be used that the current production repository may not have because
+             we're using a newer version. This is only used for a test Infinispan server and it should be safe to
+             use the community version here.
+        -->
+        <version.org.infinispan.server.community>9.4.15.Final</version.org.infinispan.server.community>
         <!-- Byteman configuration -->
         <version.org.jboss.byteman>4.0.6</version.org.jboss.byteman>
     </properties>
