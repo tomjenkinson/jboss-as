@@ -248,188 +248,187 @@
             to sort automaticly use
              mvn com.github.ekryd.sortpom:sortpom-maven-plugin:2.8.0:sort  -Dsort.sortProperties=true -Dsort.nrOfIndentSpace=4 -Dsort.keepBlankLines=true -Dsort.sortDependencies=scope,groupId,artifactId
          -->
-        <version.antlr>2.7.7</version.antlr>
-        <version.com.fasterxml.classmate>1.3.4</version.com.fasterxml.classmate>
+        <version.antlr>2.7.7.redhat-7</version.antlr>
+        <version.com.fasterxml.classmate>1.3.4.redhat-1</version.com.fasterxml.classmate>
         <version.com.fasterxml.jackson>2.9.10</version.com.fasterxml.jackson>
-        <version.com.github.ben-manes.caffeine>2.6.2</version.com.github.ben-manes.caffeine>
-        <version.com.github.fge.jackson-coreutils>1.0</version.com.github.fge.jackson-coreutils>
-        <version.com.github.fge.json-patch>1.3</version.com.github.fge.json-patch>
-        <version.com.github.spullara.mustache>0.9.4</version.com.github.spullara.mustache>
-        <version.com.google.code.gson>2.8.2</version.com.google.code.gson>
-        <version.com.google.guava>25.0-jre</version.com.google.guava>
-        <version.com.h2database>1.4.193</version.com.h2database>
-        <version.com.microsoft.azure>6.1.0</version.com.microsoft.azure>
-        <version.com.squareup.okhttp3>3.9.0</version.com.squareup.okhttp3>
-        <version.com.squareup.okio>1.13.0</version.com.squareup.okio>
+        <version.com.github.ben-manes.caffeine>2.6.2.redhat-1</version.com.github.ben-manes.caffeine>
+        <version.com.github.fge.jackson-coreutils>1.0.0.redhat-1</version.com.github.fge.jackson-coreutils>
+        <version.com.github.fge.json-patch>1.3.0.redhat-1</version.com.github.fge.json-patch>
+        <version.com.github.spullara.mustache>0.9.4.redhat-1</version.com.github.spullara.mustache>
+        <version.com.google.code.gson>2.8.2.redhat-5</version.com.google.code.gson>
+        <version.com.google.guava>25.0.0.redhat-1</version.com.google.guava>
+        <version.com.h2database>1.4.193.redhat-2</version.com.h2database>
+        <version.com.microsoft.azure>6.1.0.redhat-1</version.com.microsoft.azure>
+        <version.com.squareup.okhttp3>3.9.0.redhat-3</version.com.squareup.okhttp3>
+        <version.com.squareup.okio>1.13.0.redhat-3</version.com.squareup.okio>
         <version.com.sun.activation.jakarta.activation>1.2.1</version.com.sun.activation.jakarta.activation>
-        <version.com.sun.faces>2.3.9.SP03</version.com.sun.faces>
-        <version.com.sun.istack>3.0.7</version.com.sun.istack>
-        <version.com.sun.xml.fastinfoset>1.2.13</version.com.sun.xml.fastinfoset>
-        <version.commons-beanutils>1.9.3</version.commons-beanutils>
+        <version.com.sun.faces>2.3.9.SP03-redhat-00001</version.com.sun.faces>
+        <version.com.sun.istack>3.0.7.redhat-00001</version.com.sun.istack>
+        <version.com.sun.xml.fastinfoset>1.2.13.redhat-1</version.com.sun.xml.fastinfoset>
+        <version.commons-beanutils>1.9.3.redhat-1</version.commons-beanutils>
         <version.commons-cli>1.3.1</version.commons-cli>
-        <version.commons-codec>1.11</version.commons-codec>
-        <version.commons-collections>3.2.2</version.commons-collections>
+        <version.commons-codec>1.11.0.redhat-00001</version.commons-codec>
+        <version.commons-collections>3.2.2.redhat-2</version.commons-collections>
         <version.commons-digester>1.8.1</version.commons-digester>
-        <version.commons-lang3>3.9</version.commons-lang3>
-        <version.dom4j>2.1.1</version.dom4j>
-        <version.gnu.getopt>1.0.13</version.gnu.getopt>
+        <version.commons-lang3>3.9.0.redhat-00001</version.commons-lang3>
+        <version.dom4j>2.1.1.redhat-00001</version.dom4j>
+        <version.gnu.getopt>1.0.13.redhat-5</version.gnu.getopt>
         <version.groovy-all>2.4.7</version.groovy-all>
         <version.httpunit>1.7.2</version.httpunit>
-        <version.io.agroal>1.3</version.io.agroal>
-        <version.io.jaegertracing>0.34.0</version.io.jaegertracing>
-        <version.io.netty>4.1.34.Final</version.io.netty>
-        <version.io.opentracing>0.31.0</version.io.opentracing>
-        <version.io.opentracing.concurrent>0.2.1</version.io.opentracing.concurrent>
+        <version.io.agroal>1.3.0.redhat-00001</version.io.agroal>
+        <version.io.jaegertracing>0.34.0.redhat-00001</version.io.jaegertracing>
+        <version.io.netty>4.1.34.Final-redhat-00002</version.io.netty>
+        <version.io.opentracing>0.31.0.redhat-00008</version.io.opentracing>
+        <version.io.opentracing.concurrent>0.2.1.redhat-00001</version.io.opentracing.concurrent>
         <version.io.opentracing.interceptors>0.0.4</version.io.opentracing.interceptors>
-        <version.io.opentracing.jaxrs2>0.4.1</version.io.opentracing.jaxrs2>
-        <version.io.opentracing.tracerresolver>0.1.5</version.io.opentracing.tracerresolver>
-        <version.io.opentracing.servlet>0.2.3</version.io.opentracing.servlet>
-        <version.io.reactivex.rxjava>2.2.2</version.io.reactivex.rxjava>
+        <version.io.opentracing.jaxrs2>0.4.1.redhat-00006</version.io.opentracing.jaxrs2>
+        <version.io.opentracing.tracerresolver>0.1.5.redhat-00001</version.io.opentracing.tracerresolver>
+        <version.io.opentracing.servlet>0.2.3.redhat-00001</version.io.opentracing.servlet>
+        <version.io.reactivex.rxjava>2.2.2.redhat-00001</version.io.reactivex.rxjava>
         <version.io.rest-assured>3.0.0</version.io.rest-assured>
-        <version.io.smallrye.smallrye-config>1.3.6</version.io.smallrye.smallrye-config>
-        <version.io.smallrye.smallrye-health>2.0.0</version.io.smallrye.smallrye-health>
+        <version.io.smallrye.smallrye-config>1.3.6.redhat-00001</version.io.smallrye.smallrye-config>
+        <version.io.smallrye.smallrye-health>2.0.0.redhat-00001</version.io.smallrye.smallrye-health>
         <version.io.smallrye.smallrye-metrics>2.1.5</version.io.smallrye.smallrye-metrics>
-        <version.io.smallrye.opentracing>1.3.0</version.io.smallrye.opentracing>
-        <version.io.undertow.jastow>2.0.7.Final</version.io.undertow.jastow>
-        <version.io.undertow.js>1.0.2.Final</version.io.undertow.js>
+        <version.io.smallrye.opentracing>1.3.0.redhat-00008</version.io.smallrye.opentracing>
+        <version.io.undertow.jastow>2.0.7.Final-redhat-00001</version.io.undertow.jastow>
+        <version.io.undertow.js>1.0.2.Final-redhat-1</version.io.undertow.js>
         <version.jakarta.enterprise>2.0.2</version.jakarta.enterprise>
         <version.jakarta.json.bind.api>1.0.2</version.jakarta.json.bind.api>
-        <version.jakarta.mail>1.6.4</version.jakarta.mail>
-        <version.jakarta.persistence>2.2.3</version.jakarta.persistence>
-        <version.jakarta.security.enterprise>1.0.2</version.jakarta.security.enterprise>
-        <version.jakarta.validation>2.0.2</version.jakarta.validation>
-        <version.javax.jws.jsr181-api>1.0-MR1</version.javax.jws.jsr181-api>
-        <version.jaxen>1.1.6</version.jaxen>
-        <version.jboss.jaxbintros>1.0.3.GA</version.jboss.jaxbintros>
-        <version.joda-time>2.9.7</version.joda-time>
-        <version.jsoup>1.8.3</version.jsoup>
-        <version.net.jcip>1.0</version.net.jcip>
-        <version.net.shibboleth.utilities.java-support>7.3.0</version.net.shibboleth.utilities.java-support>
-        <version.org.apache.activemq.artemis>2.9.0</version.org.apache.activemq.artemis>
-        <version.org.apache.activemq.artemis.native>1.0.0</version.org.apache.activemq.artemis.native>
+        <version.jakarta.mail>1.6.4.redhat-00001</version.jakarta.mail>
+        <version.jakarta.persistence>2.2.3.redhat-00001</version.jakarta.persistence>
+        <version.jakarta.security.enterprise>1.0.2.redhat-00001</version.jakarta.security.enterprise>
+        <version.jakarta.validation>2.0.2.redhat-00001</version.jakarta.validation>
+        <version.javax.jws.jsr181-api>1.0.0.MR1-redhat-8</version.javax.jws.jsr181-api>
+        <version.jaxen>1.1.6.redhat-2</version.jaxen>
+        <version.jboss.jaxbintros>1.0.3.GA-redhat-00001</version.jboss.jaxbintros>
+        <version.joda-time>2.9.7.redhat-1</version.joda-time>
+        <version.jsoup>1.8.3.redhat-2</version.jsoup>
+        <version.net.jcip>1.0.0.redhat-8</version.net.jcip>
+        <version.net.shibboleth.utilities.java-support>7.3.0.redhat-00001</version.net.shibboleth.utilities.java-support>
+        <version.org.apache.activemq.artemis>2.9.0.redhat-00005</version.org.apache.activemq.artemis>
+        <version.org.apache.activemq.artemis.native>1.0.0.00003-redhat-00001</version.org.apache.activemq.artemis.native>
         <version.org.apache.activemq.libartemis.native>1.0.0_00003-redhat-1</version.org.apache.activemq.libartemis.native>
-        <version.org.apache.avro>1.7.6</version.org.apache.avro>
-        <version.org.apache.cxf>3.3.3</version.org.apache.cxf>
-        <version.org.apache.cxf.xjcplugins>3.3.0</version.org.apache.cxf.xjcplugins>
+        <version.org.apache.avro>1.7.6.redhat-2</version.org.apache.avro>
+        <version.org.apache.cxf>3.3.3.redhat-00001</version.org.apache.cxf>
+        <version.org.apache.cxf.xjcplugins>3.3.0.redhat-00001</version.org.apache.cxf.xjcplugins>
         <version.org.apache.ds>2.0.0-M24</version.org.apache.ds>
-        <version.org.apache.httpcomponents.httpasyncclient>4.1.4</version.org.apache.httpcomponents.httpasyncclient>
-        <version.org.apache.james.apache-mime4j>0.6</version.org.apache.james.apache-mime4j>
-        <version.org.apache.jstl>1.2.6-RC1</version.org.apache.jstl>
-        <version.org.apache.lucene>5.5.5</version.org.apache.lucene>
+        <version.org.apache.httpcomponents.httpasyncclient>4.1.4.redhat-00001</version.org.apache.httpcomponents.httpasyncclient>
+        <version.org.apache.james.apache-mime4j>0.6.0.redhat-7</version.org.apache.james.apache-mime4j>
+        <version.org.apache.jstl>1.2.6.RC1-redhat-1</version.org.apache.jstl>
+        <version.org.apache.lucene>5.5.5.redhat-2</version.org.apache.lucene>
         <version.org.apache.myfaces.core>2.3.1</version.org.apache.myfaces.core>
-        <version.org.apache.neethi>3.1.1</version.org.apache.neethi>
+        <version.org.apache.neethi>3.1.1.redhat-1</version.org.apache.neethi>
         <version.org.apache.openjpa>2.4.2</version.org.apache.openjpa>
-
-        <version.org.apache.santuario>2.1.4</version.org.apache.santuario>
-        <version.org.apache.thrift>0.12.0</version.org.apache.thrift>
-        <version.org.apache.velocity>2.1</version.org.apache.velocity>
-        <version.org.apache.ws.security>2.2.4</version.org.apache.ws.security>
-        <version.org.apache.ws.xmlschema>2.2.4</version.org.apache.ws.xmlschema>
-        <version.org.apache.xalan>2.7.1.jbossorg-4</version.org.apache.xalan>
-        <version.org.bouncycastle>1.60</version.org.bouncycastle>
-        <version.org.bytebuddy>1.9.11</version.org.bytebuddy>
-        <version.org.codehaus.jackson>1.9.13</version.org.codehaus.jackson>
-        <version.org.codehaus.jettison>1.3.8</version.org.codehaus.jettison>
-        <version.org.cryptacular>1.2.0</version.org.cryptacular>
-        <version.org.eclipse.jdt.core.compiler>4.6.1</version.org.eclipse.jdt.core.compiler>
-        <version.org.eclipse.microprofile.config.api>1.3</version.org.eclipse.microprofile.config.api>
+        <version.org.apache.santuario>2.1.4.redhat-00001</version.org.apache.santuario>
+        <version.org.apache.thrift>0.12.0.redhat-00001</version.org.apache.thrift>
+        <version.org.apache.velocity>2.1.0.redhat-00001</version.org.apache.velocity>
+        <version.org.apache.ws.security>2.2.4.redhat-00001</version.org.apache.ws.security>
+        <version.org.apache.ws.xmlschema>2.2.4.redhat-00001</version.org.apache.ws.xmlschema>
+        <version.org.apache.xalan>2.7.1.redhat-12</version.org.apache.xalan>
+        <version.org.bouncycastle>1.60.0.redhat-00001</version.org.bouncycastle>
+        <version.org.bytebuddy>1.9.11.redhat-00002</version.org.bytebuddy>
+        <version.org.codehaus.jackson>1.9.13.redhat-00006</version.org.codehaus.jackson>
+        <version.org.codehaus.jettison>1.3.8.redhat-1</version.org.codehaus.jettison>
+        <version.org.cryptacular>1.2.0.redhat-1</version.org.cryptacular>
+        <version.org.eclipse.jdt.core.compiler>4.6.1.redhat-1</version.org.eclipse.jdt.core.compiler>
+        <version.org.eclipse.microprofile.config.api>1.3.0.redhat-00001</version.org.eclipse.microprofile.config.api>
         <version.org.eclipse.microprofile.health.api>2.0.1</version.org.eclipse.microprofile.health.api>
-        <version.org.eclipse.microprofile.metrics.api>2.0.2</version.org.eclipse.microprofile.metrics.api>
-        <version.org.eclipse.microprofile.opentracing>1.3.1</version.org.eclipse.microprofile.opentracing>
+        <version.org.eclipse.microprofile.metrics.api>2.0.2.redhat-00001</version.org.eclipse.microprofile.metrics.api>
+        <version.org.eclipse.microprofile.opentracing>1.3.1.redhat-00003</version.org.eclipse.microprofile.opentracing>
         <version.org.eclipse.microprofile.rest.client.api>1.3.2</version.org.eclipse.microprofile.rest.client.api>
-        <version.org.eclipse.yasson>1.0.5</version.org.eclipse.yasson>
+        <version.org.eclipse.yasson>1.0.5.redhat-00001</version.org.eclipse.yasson>
         <version.org.eclipselink.version>2.7.3</version.org.eclipselink.version>
-        <version.org.glassfish.jakarta.el>3.0.2</version.org.glassfish.jakarta.el>
-        <version.org.glassfish.javax.enterprise.concurrent>1.0</version.org.glassfish.javax.enterprise.concurrent>
+        <version.org.glassfish.jakarta.el>3.0.2.redhat-00001</version.org.glassfish.jakarta.el>
+        <version.org.glassfish.javax.enterprise.concurrent>1.0.0.redhat-1</version.org.glassfish.javax.enterprise.concurrent>
         <version.org.glassfish.soteria>1.0.1</version.org.glassfish.soteria>
         <version.org.harmcrest>1.3</version.org.harmcrest>
-        <version.org.hibernate>5.3.12.Final</version.org.hibernate>
-        <version.org.hibernate.commons.annotations>5.0.5.Final</version.org.hibernate.commons.annotations>
-        <version.org.hibernate.search>5.10.7.Final</version.org.hibernate.search>
-        <version.org.hibernate.validator>6.0.17.Final</version.org.hibernate.validator>
-        <version.org.hornetq>2.4.7.Final</version.org.hornetq>
-        <version.org.infinispan>9.4.16.Final</version.org.infinispan>
-        <version.org.jasypt>1.9.2</version.org.jasypt>
-        <version.org.javassist>3.23.2-GA</version.org.javassist>
-        <version.org.jberet>1.3.4.Final</version.org.jberet>
-        <version.org.jboss.activemq.artemis.integration>1.0.2</version.org.jboss.activemq.artemis.integration>
+        <version.org.hibernate>5.3.12.Final-redhat-00001</version.org.hibernate>
+        <version.org.hibernate.commons.annotations>5.0.5.Final-redhat-00002</version.org.hibernate.commons.annotations>
+        <version.org.hibernate.search>5.10.7.Final-redhat-00001</version.org.hibernate.search>
+        <version.org.hibernate.validator>6.0.17.Final-redhat-00001</version.org.hibernate.validator>
+        <version.org.hornetq>2.4.7.Final-redhat-2</version.org.hornetq>
+        <version.org.infinispan>9.4.16.Final-redhat-00002</version.org.infinispan>
+        <version.org.jasypt>1.9.2.redhat-1</version.org.jasypt>
+        <version.org.javassist>3.23.2.GA-redhat-00001</version.org.javassist>
+        <version.org.jberet>1.3.4.Final-redhat-00001</version.org.jberet>
+        <version.org.jboss.activemq.artemis.integration>1.0.2.redhat-1</version.org.jboss.activemq.artemis.integration>
         <version.org.jboss.arquillian.core>1.4.0.Final</version.org.jboss.arquillian.core>
-        <version.org.jboss.common.jboss-common-beans>2.0.1.Final</version.org.jboss.common.jboss-common-beans>
-        <version.org.jboss.ejb-client>4.0.23.Final</version.org.jboss.ejb-client>
-        <version.org.jboss.ejb-client-legacy>3.0.3.Final</version.org.jboss.ejb-client-legacy>
-        <version.org.jboss.ejb3.ext-api>2.3.0.Final</version.org.jboss.ejb3.ext-api>
-        <version.org.jboss.genericjms>2.0.2.Final</version.org.jboss.genericjms>
-        <version.org.jboss.hal.console>3.2.1.Final</version.org.jboss.hal.console>          
-        <version.org.jboss.iiop-client>1.0.1.Final</version.org.jboss.iiop-client>
-        <version.org.jboss.ironjacamar>1.4.17.Final</version.org.jboss.ironjacamar>
-        <version.org.jboss.jboss-transaction-spi>7.6.0.Final</version.org.jboss.jboss-transaction-spi>
+        <version.org.jboss.common.jboss-common-beans>2.0.1.Final-redhat-00001</version.org.jboss.common.jboss-common-beans>
+        <version.org.jboss.ejb-client>4.0.23.Final-redhat-00001</version.org.jboss.ejb-client>
+        <version.org.jboss.ejb-client-legacy>3.0.3.Final-redhat-00001</version.org.jboss.ejb-client-legacy>
+        <version.org.jboss.ejb3.ext-api>2.3.0.Final-redhat-00001</version.org.jboss.ejb3.ext-api>
+        <version.org.jboss.genericjms>2.0.2.Final-redhat-00001</version.org.jboss.genericjms>
+        <version.org.jboss.hal.console>3.2.1.Final-redhat-00001</version.org.jboss.hal.console>          
+        <version.org.jboss.iiop-client>1.0.1.Final-redhat-1</version.org.jboss.iiop-client>
+        <version.org.jboss.ironjacamar>1.4.17.Final-redhat-00001</version.org.jboss.ironjacamar>
+        <version.org.jboss.jboss-transaction-spi>7.6.0.Final-redhat-1</version.org.jboss.jboss-transaction-spi>
         <!-- Only used for testing -->
         <version.org.jboss.logmanager.commons-logging-jboss-logmanager>1.0.3.Final</version.org.jboss.logmanager.commons-logging-jboss-logmanager>
-        <version.org.jboss.metadata>13.0.0.Final</version.org.jboss.metadata>
-        <version.org.jboss.mod_cluster>1.4.1.Final</version.org.jboss.mod_cluster>
-        <version.org.jboss.narayana>5.9.8.Final</version.org.jboss.narayana>
-        <version.org.jboss.openjdk-orb>8.1.4.Final</version.org.jboss.openjdk-orb>
-        <version.org.jboss.resteasy>3.9.0.Final</version.org.jboss.resteasy>
-        <version.org.jboss.seam.int>7.0.0.GA</version.org.jboss.seam.int>
-        <version.org.jboss.security.jboss-negotiation>3.0.6.Final</version.org.jboss.security.jboss-negotiation>
-        <version.org.jboss.security.jbossxacml>2.0.8.Final</version.org.jboss.security.jbossxacml>
+        <version.org.jboss.metadata>13.0.0.Final-redhat-00001</version.org.jboss.metadata>
+        <version.org.jboss.mod_cluster>1.4.1.Final-redhat-00001</version.org.jboss.mod_cluster>
+        <version.org.jboss.narayana>5.9.8.Final-redhat-00002</version.org.jboss.narayana>
+        <version.org.jboss.openjdk-orb>8.1.4.Final-redhat-00002</version.org.jboss.openjdk-orb>
+        <version.org.jboss.resteasy>3.9.0.Final-redhat-00001</version.org.jboss.resteasy>
+        <version.org.jboss.seam.int>7.0.0.GA-redhat-2</version.org.jboss.seam.int>
+        <version.org.jboss.security.jboss-negotiation>3.0.6.Final-redhat-00001</version.org.jboss.security.jboss-negotiation>
+        <version.org.jboss.security.jbossxacml>2.0.8.Final-redhat-8</version.org.jboss.security.jbossxacml>
         <!-- only needed here until wildfly-arquillian has this version properly synced with arquillian itslef  -->
         <version.org.jboss.shrinkwrap.descriptors>2.0.0</version.org.jboss.shrinkwrap.descriptors>
         <version.org.jboss.shrinkwrap.shrinkwrap>1.2.6</version.org.jboss.shrinkwrap.shrinkwrap>
         <!-- Include the artifactId for org.jboss.spec project versions because artifactId contains the API spec version -->
-        <version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.3_spec>2.0.1.Final</version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.3_spec>
-        <version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>2.0.0.Final</version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>
-        <version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec>2.0.0.Final</version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec>
-        <version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec>2.0.0.Final</version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec>
-        <version.org.jboss.spec.javax.enterprise.concurrent.jboss-concurrency-api_1.0_spec>2.0.0.Final</version.org.jboss.spec.javax.enterprise.concurrent.jboss-concurrency-api_1.0_spec>
+        <version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.3_spec>2.0.1.Final-redhat-00001</version.org.jboss.spec.javax.annotation.jboss-annotations-api_1.3_spec>
+        <version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.batch.jboss-batch-api_1.0_spec>
+        <version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.ejb.jboss-ejb-api_3.2_spec>
+        <version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.el.jboss-el-api_3.0_spec>
+        <version.org.jboss.spec.javax.enterprise.concurrent.jboss-concurrency-api_1.0_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.enterprise.concurrent.jboss-concurrency-api_1.0_spec>
         <version.org.jboss.spec.javax.faces.jboss-jsf-api_2.3_spec>3.0.0.Final</version.org.jboss.spec.javax.faces.jboss-jsf-api_2.3_spec>
-        <version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec>2.0.0.Final</version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec>
-        <version.org.jboss.spec.javax.management.j2ee.jboss-j2eemgmt-api_1.1_spec>2.0.0.Final</version.org.jboss.spec.javax.management.j2ee.jboss-j2eemgmt-api_1.1_spec>
-        <version.org.jboss.spec.javax.resource.jboss-connector-api_1.7_spec>2.0.0.Final</version.org.jboss.spec.javax.resource.jboss-connector-api_1.7_spec>
+        <version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.jms.jboss-jms-api_2.0_spec>
+        <version.org.jboss.spec.javax.management.j2ee.jboss-j2eemgmt-api_1.1_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.management.j2ee.jboss-j2eemgmt-api_1.1_spec>
+        <version.org.jboss.spec.javax.resource.jboss-connector-api_1.7_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.resource.jboss-connector-api_1.7_spec>
         <version.org.jboss.spec.javax.servlet.jboss-servlet-api_4.0_spec>2.0.0.Final</version.org.jboss.spec.javax.servlet.jboss-servlet-api_4.0_spec>
-        <version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec>2.0.0.Final</version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec>
-        <version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.3_spec>2.0.0.Final</version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.3_spec>
-        <version.org.jboss.spec.javax.websockets>2.0.0.Final</version.org.jboss.spec.javax.websockets>
+        <version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.servlet.jsp.jboss-jsp-api_2.3_spec>
+        <version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.3_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.3_spec>
+        <version.org.jboss.spec.javax.websockets>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.websockets>
         <version.org.jboss.spec.javax.ws.jboss-jaxrs-api_2.1_spec>2.0.0.Final</version.org.jboss.spec.javax.ws.jboss-jaxrs-api_2.1_spec>
         <version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec>2.0.0.Final</version.org.jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec>
-        <version.org.jboss.spec.javax.xml.rpc.jboss-jaxrpc-api_1.1_spec>2.0.0.Final</version.org.jboss.spec.javax.xml.rpc.jboss-jaxrpc-api_1.1_spec>
-        <version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.4_spec>1.0.0.Final</version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.4_spec>
-        <version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec>2.0.0.Final</version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec>
-        <version.org.jboss.weld.weld>3.1.2.Final</version.org.jboss.weld.weld>
-        <version.org.jboss.weld.weld-api>3.1.SP1</version.org.jboss.weld.weld-api>
-        <version.org.jboss.ws.api>1.1.2.Final</version.org.jboss.ws.api>
-        <version.org.jboss.ws.common>3.2.3.Final</version.org.jboss.ws.common>
-        <version.org.jboss.ws.common.tools>1.3.2.Final</version.org.jboss.ws.common.tools>
-        <version.org.jboss.ws.cxf>5.3.0.Final</version.org.jboss.ws.cxf>
-        <version.org.jboss.ws.jaxws-undertow-httpspi>1.0.1.Final</version.org.jboss.ws.jaxws-undertow-httpspi>
-        <version.org.jboss.ws.spi>3.2.3.Final</version.org.jboss.ws.spi>
-        <version.org.jboss.xnio.netty.netty-xnio-transport>0.1.6.Final</version.org.jboss.xnio.netty.netty-xnio-transport>
-        <version.org.jgroups>4.1.4.Final</version.org.jgroups>
-        <version.org.jgroups.azure>1.2.1.Final</version.org.jgroups.azure>
-        <version.org.jgroups.kubernetes>1.0.12.Final</version.org.jgroups.kubernetes>
+        <version.org.jboss.spec.javax.xml.rpc.jboss-jaxrpc-api_1.1_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.xml.rpc.jboss-jaxrpc-api_1.1_spec>
+        <version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.4_spec>1.0.0.Final-redhat-00001</version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.4_spec>
+        <version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec>2.0.0.Final-redhat-00001</version.org.jboss.spec.javax.xml.ws.jboss-jaxws-api_2.3_spec>
+        <version.org.jboss.weld.weld>3.1.2.Final-redhat-00001</version.org.jboss.weld.weld>
+        <version.org.jboss.weld.weld-api>3.1.0.SP1-redhat-00001</version.org.jboss.weld.weld-api>
+        <version.org.jboss.ws.api>1.1.2.Final-redhat-00001</version.org.jboss.ws.api>
+        <version.org.jboss.ws.common>3.2.3.Final-redhat-00001</version.org.jboss.ws.common>
+        <version.org.jboss.ws.common.tools>1.3.2.Final-redhat-00001</version.org.jboss.ws.common.tools>
+        <version.org.jboss.ws.cxf>5.3.0.Final-redhat-00001</version.org.jboss.ws.cxf>
+        <version.org.jboss.ws.jaxws-undertow-httpspi>1.0.1.Final-redhat-1</version.org.jboss.ws.jaxws-undertow-httpspi>
+        <version.org.jboss.ws.spi>3.2.3.Final-redhat-00001</version.org.jboss.ws.spi>
+        <version.org.jboss.xnio.netty.netty-xnio-transport>0.1.6.Final-redhat-00001</version.org.jboss.xnio.netty.netty-xnio-transport>
+        <version.org.jgroups>4.1.4.Final-redhat-00001</version.org.jgroups>
+        <version.org.jgroups.azure>1.2.1.Final-redhat-00001</version.org.jgroups.azure>
+        <version.org.jgroups.kubernetes>1.0.12.Final-redhat-00001</version.org.jgroups.kubernetes>
         <version.org.jipijapa>1.0.1.Final</version.org.jipijapa>
         <version.org.jvnet.staxex>1.7.8</version.org.jvnet.staxex>
         <version.org.kohsuke.metainf-services>1.7</version.org.kohsuke.metainf-services>
-        <version.org.opensaml.opensaml>3.3.0</version.org.opensaml.opensaml>
-        <version.org.ow2.asm>7.1</version.org.ow2.asm>
-        <version.org.picketbox.picketbox-commons>1.0.0.final</version.org.picketbox.picketbox-commons>
-        <version.org.picketlink>2.5.5.SP12-redhat-00006</version.org.picketlink>
-        <version.org.reactivestreams>1.0.2</version.org.reactivestreams>
+        <version.org.opensaml.opensaml>3.3.0.redhat-1</version.org.opensaml.opensaml>
+        <version.org.ow2.asm>7.1.0.redhat-00001</version.org.ow2.asm>
+        <version.org.picketbox.picketbox-commons>1.0.0.final-redhat-5</version.org.picketbox.picketbox-commons>
+        <version.org.picketlink>2.5.5.SP12-redhat-00009</version.org.picketlink>
+        <version.org.reactivestreams>1.0.2.redhat-1</version.org.reactivestreams>
         <version.org.syslog4j>0.9.30</version.org.syslog4j>
         <version.org.wildfly.arquillian>2.2.0.Final</version.org.wildfly.arquillian>
         <version.org.wildfly.core>10.0.0.Final</version.org.wildfly.core>
         <version.org.wildfly.extras.creaper>1.6.1</version.org.wildfly.extras.creaper>
-        <version.org.wildfly.http-client>1.0.16.Final</version.org.wildfly.http-client>
-        <version.org.wildfly.naming-client>1.0.11.Final</version.org.wildfly.naming-client>
-        <version.org.wildfly.transaction.client>1.1.7.Final</version.org.wildfly.transaction.client>
-        <version.org.yaml.snakeyaml>1.18</version.org.yaml.snakeyaml>
+        <version.org.wildfly.http-client>1.0.16.Final-redhat-00001</version.org.wildfly.http-client>
+        <version.org.wildfly.naming-client>1.0.11.Final-redhat-00001</version.org.wildfly.naming-client>
+        <version.org.wildfly.transaction.client>1.1.7.Final-redhat-00001</version.org.wildfly.transaction.client>
+        <version.org.yaml.snakeyaml>1.18.0.redhat-2</version.org.yaml.snakeyaml>
         <version.rhino.js>1.7R2</version.rhino.js>
-        <version.sun.jaxb>2.3.1</version.sun.jaxb>
+        <version.sun.jaxb>2.3.1.redhat-00002</version.sun.jaxb>
         <version.sun.saaj-impl>1.4.1.SP1</version.sun.saaj-impl>
-        <version.wsdl4j>1.6.3</version.wsdl4j>
+        <version.wsdl4j>1.6.3.redhat-2</version.wsdl4j>
         <version.xml-resolver>1.2</version.xml-resolver>
         <!-- Apache xml-resolver -->
-        <version.xom>1.2.10</version.xom>
+        <version.xom>1.2.10.redhat-1</version.xom>
 
 
     </properties>
@@ -2001,6 +2000,10 @@
                     <exclusion>
                         <groupId>javax.xml.bind</groupId>
                         <artifactId>jaxb-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jboss.spec.javax.xml.bind</groupId>
+                        <artifactId>jboss-jaxb-api_2.2_spec</artifactId>
                     </exclusion>
                     <!-- TODO remove this exclusion once this supports Jakarta Activation -->
                     <!-- Superceded by com.sun.activation:jakarta.activation -->
