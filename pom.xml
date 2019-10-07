@@ -1735,6 +1735,12 @@
                 <groupId>io.smallrye</groupId>
                 <artifactId>smallrye-opentracing</artifactId>
                 <version>${version.io.smallrye.opentracing}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.inject</groupId>
+                        <artifactId>javax.inject</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
