@@ -407,7 +407,7 @@
         <version.org.jgroups.azure>1.2.1.Final-redhat-00001</version.org.jgroups.azure>
         <version.org.jgroups.kubernetes>1.0.12.Final-redhat-00001</version.org.jgroups.kubernetes>
         <version.org.jipijapa>1.0.1.Final</version.org.jipijapa>
-        <version.org.jvnet.staxex>1.7.8</version.org.jvnet.staxex>
+        <version.org.jvnet.staxex>1.7.8.redhat-00001</version.org.jvnet.staxex>
         <version.org.kohsuke.metainf-services>1.7</version.org.kohsuke.metainf-services>
         <version.org.opensaml.opensaml>3.3.0.redhat-1</version.org.opensaml.opensaml>
         <version.org.ow2.asm>7.1.0.redhat-00001</version.org.ow2.asm>
