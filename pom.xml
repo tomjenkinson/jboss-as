@@ -293,7 +293,7 @@
         <version.io.undertow.jastow>2.0.7.Final-redhat-00001</version.io.undertow.jastow>
         <version.io.undertow.js>1.0.2.Final-redhat-1</version.io.undertow.js>
         <version.jakarta.enterprise>2.0.2.redhat-00002</version.jakarta.enterprise>
-        <version.jakarta.json.bind.api>1.0.2</version.jakarta.json.bind.api>
+        <version.jakarta.json.bind.api>1.0.2.redhat-00001</version.jakarta.json.bind.api>
         <version.jakarta.mail>1.6.4.redhat-00001</version.jakarta.mail>
         <version.jakarta.persistence>2.2.3.redhat-00001</version.jakarta.persistence>
         <version.jakarta.security.enterprise>1.0.2.redhat-00001</version.jakarta.security.enterprise>
