@@ -222,6 +222,7 @@
                 <module>basic</module>
                 <module>elytron</module>
                 <module>microprofile-tck</module>
+                <module>clustering</module>
             </modules>
         </profile>
 
