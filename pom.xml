@@ -428,6 +428,11 @@
         <version.rhino.js>1.7R2</version.rhino.js>
         <version.sun.jaxb>2.3.1.redhat-00002</version.sun.jaxb>
         <version.sun.saaj-impl>1.4.1.SP1-redhat-00001</version.sun.saaj-impl>
+        <!-- This version is also hard-coded in
+             feature-pack/src/main/resources/modules/system/layers/base/com/sun/xml/messaging/saaj/main/module.xml. If
+             the version here changes the hard-coded version must change as well.
+        -->
+        <version.sun.saaj-impl-1.3>1.3.16.SP1-redhat-6</version.sun.saaj-impl-1.3>
         <version.wsdl4j>1.6.3.redhat-2</version.wsdl4j>
         <version.xml-resolver>1.2</version.xml-resolver>
         <!-- Apache xml-resolver -->
