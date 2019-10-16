@@ -154,7 +154,7 @@
         <copy-artifact artifact="org.wildfly.core:wildfly-cli::client" to-location="bin/client/jboss-cli-client.jar"/>
         <copy-artifact artifact="org.apache.activemq:libartemis-native-32:so" to-location="modules/system/layers/base/org/apache/activemq/artemis/journal/main/lib/linux-i686/libartemis-native-32.so"/>
         <copy-artifact artifact="org.apache.activemq:libartemis-native-64:so" to-location="modules/system/layers/base/org/apache/activemq/artemis/journal/main/lib/linux-x86_64/libartemis-native-64.so"/>
-        <copy-artifact artifact="com.sun.xml.messaging.saaj:saaj-impl:::1.3.16.SP1-redhat-6" to-location="modules/system/layers/base/com/sun/xml/messaging/saaj/main/"/>
+        <copy-artifact artifact="com.sun.xml.messaging.saaj:saaj-impl:::${version.sun.saaj-impl-1.3}" to-location="modules/system/layers/base/com/sun/xml/messaging/saaj/main/"/>
     </copy-artifacts>
     <mkdirs>
         <dir name="standalone/lib/ext"/>
