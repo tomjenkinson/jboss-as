@@ -31,7 +31,7 @@
     <groupId>org.jboss.universe</groupId>
     <artifactId>product-universe</artifactId>
     <!-- Keep this in sync with version.org.jboss.universe.product-universe and do not use -SNAPSHOT until https://issues.jboss.org/browse/GAL-291 gets resolved -->
-    <version>7.3.0.CD18</version>
+    <version>7.3.0.GA</version>
     <packaging>pom</packaging>
 
     <name>EAP: Galleon Product Universe</name>
