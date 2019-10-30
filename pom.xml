@@ -9408,5 +9408,16 @@
                 </pluginRepository>
             </pluginRepositories>
         </profile>
+        <profile>
+            <id>management-model-documentation</id>
+            <activation>
+                <property>
+                    <name>management-model-documentation</name>
+                </property>
+            </activation>
+            <modules>
+                <module>management-model-documentation</module>
+            </modules>
+        </profile>
     </profiles>
 </project>
