@@ -290,6 +290,11 @@
       <artifactId>jakarta.mail</artifactId>
       <licenses>
         <license>
+          <name>Eclipse Distribution License, Version 1.0</name>
+          <url>http://repository.jboss.org/licenses/edl-1.0.txt</url>
+          <distribution>repo</distribution>
+        </license>
+        <license>
           <name>Eclipse Public License 2.0</name>
           <url>http://www.eclipse.org/legal/epl-2.0</url>
           <distribution>repo</distribution>
