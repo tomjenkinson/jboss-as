@@ -3864,13 +3864,13 @@
       <artifactId>jboss-jsf-api_2.3_spec</artifactId>
       <licenses>
         <license>
-          <name>GNU General Public License v2.0 only, with Classpath exception</name>
-          <url>https://fedoraproject.org/wiki/Licensing/GPL_Classpath_Exception</url>
+          <name>Eclipse Public License 2.0</name>
+          <url>http://www.eclipse.org/legal/epl-v20.html</url>
           <distribution>repo</distribution>
         </license>
         <license>
-          <name>Eclipse Public License 2.0</name>
-          <url>http://www.eclipse.org/legal/epl-v20.html</url>
+          <name>GNU General Public License v2.0 only, with Classpath exception</name>
+          <url>https://fedoraproject.org/wiki/Licensing/GPL_Classpath_Exception</url>
           <distribution>repo</distribution>
         </license>
       </licenses>
