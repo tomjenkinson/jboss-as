@@ -3981,8 +3981,8 @@
       <artifactId>jboss-jaxrpc-api_1.1_spec</artifactId>
       <licenses>
         <license>
-          <name>Common Development and Distribution License 1.0</name>
-          <url>http://repository.jboss.org/licenses/cddl.txt</url>
+          <name>Eclipse Public License 2.0</name>
+          <url>http://www.eclipse.org/legal/epl-v20.html</url>
           <distribution>repo</distribution>
         </license>
         <license>
