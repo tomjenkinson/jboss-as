@@ -2202,17 +2202,6 @@
     </dependency>
     <dependency>
       <groupId>org.infinispan</groupId>
-      <artifactId>infinispan-hibernate-cache-v51</artifactId>
-      <licenses>
-        <license>
-          <name>Apache License 2.0</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-          <distribution>repo</distribution>
-        </license>
-      </licenses>
-    </dependency>
-    <dependency>
-      <groupId>org.infinispan</groupId>
       <artifactId>infinispan-hibernate-cache-v53</artifactId>
       <licenses>
         <license>
