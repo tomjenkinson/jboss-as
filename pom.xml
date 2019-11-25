@@ -1311,6 +1311,10 @@
                         <artifactId>jakarta.activation</artifactId>
                     </exclusion>
                     <exclusion>
+                        <groupId>jakarta.activation</groupId>
+                        <artifactId>jakarta.activation-api</artifactId>
+                    </exclusion>
+                    <exclusion>
                         <groupId>jakarta.xml.bind</groupId>
                         <artifactId>jakarta.xml.bind-api</artifactId>
                     </exclusion>
@@ -5034,6 +5038,10 @@
                         <artifactId>commons-logging</artifactId>
                     </exclusion>
                     <exclusion>
+                        <groupId>jakarta.activation</groupId>
+                        <artifactId>jakarta.activation-api</artifactId>
+                    </exclusion>
+                    <exclusion>
                         <groupId>org.codehaus.woodstox</groupId>
                         <artifactId>woodstox-core-asl</artifactId>
                     </exclusion>
@@ -7248,6 +7256,10 @@
                 <artifactId>jboss-saaj-api_1.4_spec</artifactId>
                 <version>${version.org.jboss.spec.javax.xml.soap.jboss-saaj-api_1.4_spec}</version>
                 <exclusions>
+                    <exclusion>
+                        <groupId>jakarta.activation</groupId>
+                        <artifactId>jakarta.activation-api</artifactId>
+                    </exclusion>
                     <exclusion>
                         <groupId>*</groupId>
                         <artifactId>*</artifactId>
