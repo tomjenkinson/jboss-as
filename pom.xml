@@ -1337,6 +1337,12 @@
                 <groupId>com.github.fge</groupId>
                 <artifactId>json-patch</artifactId>
                 <version>${version.com.github.fge.json-patch}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>*</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
