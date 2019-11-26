@@ -232,6 +232,8 @@
                                 </goals>
                                 <phase>package</phase>
                                 <configuration>
+                                    <output-licenses-file>${project.build.directory}/community-licenses.xml</output-licenses-file>
+                                    <excluded-licenses-versions>.*redhat-.*</excluded-licenses-versions>
                                     <offline>${org.wildfly.galleon-plugins.offline}</offline>
                                     <fpGroupId>${project.groupId}</fpGroupId>
                                     <fpArtifactId>wildfly-galleon-pack</fpArtifactId>
