@@ -236,6 +236,13 @@
                                     <fpGroupId>${project.groupId}</fpGroupId>
                                     <fpArtifactId>wildfly-galleon-pack</fpArtifactId>
                                     <fpVersion>${project.version}</fpVersion>
+                                    <extra-artifacts>
+                                        <artifact>
+                                            <groupId>org.jboss.galleon</groupId>
+                                            <artifactId>galleon-maven-plugin</artifactId>
+                                            <version>${version.org.jboss.galleon}</version>
+                                        </artifact>
+                                    </extra-artifacts>
                                 </configuration>
                             </execution>
                         </executions>
