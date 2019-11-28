@@ -208,7 +208,7 @@
         <version.asciidoctor.plugin>1.5.6</version.asciidoctor.plugin>
         <version.help.plugin>2.2</version.help.plugin>
         <version.jacoco.plugin>0.8.2</version.jacoco.plugin><!-- TODO property does not follow verion.groupId format -->
-        <version.org.jboss.galleon>4.0.4.Final</version.org.jboss.galleon>
+        <version.org.jboss.galleon>4.1.2.Final</version.org.jboss.galleon>
         <!--
              The following two variables could have been removed using the project.version as version for the EAP Producers and Universe maven artifacts.
              However, Galleon does not allow us creating an Universe with produces with -SNAPSHOT qualifier, so we have to define the version "manually" here.
@@ -229,7 +229,7 @@
              we should keep this the same as the version in core for consistency. -->
         <version.org.wildfly.common>1.5.1.Final-redhat-00001</version.org.wildfly.common>
         <version.org.wildfly.component-matrix-plugin>1.0.3.Final</version.org.wildfly.component-matrix-plugin>
-        <version.org.wildfly.galleon-plugins>4.0.4.Final</version.org.wildfly.galleon-plugins>
+        <version.org.wildfly.galleon-plugins>4.1.2.Final</version.org.wildfly.galleon-plugins>
         <version.org.wildfly.maven.plugins>2.0.0.Final</version.org.wildfly.maven.plugins>
         <version.org.wildfly.plugin>1.2.1.Final</version.org.wildfly.plugin>
         <version.org.zanata.plugin>3.9.1</version.org.zanata.plugin>
@@ -329,6 +329,8 @@
         <version.org.apache.xalan>2.7.1.redhat-12</version.org.apache.xalan>
         <version.org.bouncycastle>1.60.0.redhat-00001</version.org.bouncycastle>
         <version.org.bytebuddy>1.9.11.redhat-00002</version.org.bytebuddy>
+        <!-- plugin to attach community-licenses.xml in dist project -->
+        <version.org.codehaus.mojo.build-helper-maven-plugin>3.0.0</version.org.codehaus.mojo.build-helper-maven-plugin>
         <version.org.codehaus.jackson>1.9.13.redhat-00006</version.org.codehaus.jackson>
         <version.org.codehaus.jettison>1.4.0.redhat-00001</version.org.codehaus.jettison>
         <version.org.cryptacular>1.2.0.redhat-1</version.org.cryptacular>
@@ -9089,6 +9091,11 @@
                     <groupId>org.wildfly.plugins</groupId>
                     <artifactId>wildfly-component-matrix-plugin</artifactId>
                     <version>${version.org.wildfly.component-matrix-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${version.org.codehaus.mojo.build-helper-maven-plugin}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

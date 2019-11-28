@@ -232,10 +232,19 @@
                                 </goals>
                                 <phase>package</phase>
                                 <configuration>
+                                    <output-licenses-file>${project.build.directory}/community-licenses.xml</output-licenses-file>
+                                    <excluded-licenses-versions>.*redhat-.*</excluded-licenses-versions>
                                     <offline>${org.wildfly.galleon-plugins.offline}</offline>
                                     <fpGroupId>${project.groupId}</fpGroupId>
                                     <fpArtifactId>wildfly-galleon-pack</fpArtifactId>
                                     <fpVersion>${project.version}</fpVersion>
+                                    <extra-artifacts>
+                                        <artifact>
+                                            <groupId>org.jboss.galleon</groupId>
+                                            <artifactId>galleon-maven-plugin</artifactId>
+                                            <version>${version.org.jboss.galleon}</version>
+                                        </artifact>
+                                    </extra-artifacts>
                                 </configuration>
                             </execution>
                         </executions>
@@ -261,6 +270,28 @@
                                 <scope>runtime</scope>
                             </dependency>
                         </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-community-licenses-artifact</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>attach-artifact</goal>
+                                </goals>
+                                <configuration>
+                                    <artifacts>
+                                        <artifact>
+                                            <file>${project.build.directory}/community-licenses.xml</file>
+                                            <type>xml</type>
+                                            <classifier>community-licenses</classifier>
+                                        </artifact>
+                                    </artifacts>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
