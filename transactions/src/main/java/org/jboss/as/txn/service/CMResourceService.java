@@ -80,7 +80,7 @@ public class CMResourceService implements Service<Void> {
 
     @Override
     public void stop(StopContext context) {
-        jtaEnvironmentBean.getValue().getCommitMarkableResourceJNDINames().remove(jndiName);
+        jtaEnvironmentBean.getValue().removeCommitMarkableResourceJNDIName(jndiName);
         jtaEnvironmentBean.getValue().getCommitMarkableResourceTableNameMap().remove(tableName);
         jtaEnvironmentBean.getValue().getPerformImmediateCleanupOfCommitMarkableResourceBranchesMap().remove(jndiName);
         jtaEnvironmentBean.getValue().getCommitMarkableResourceRecordDeleteBatchSizeMap().remove(jndiName);
