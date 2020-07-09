@@ -59,22 +59,25 @@ public class CMResourceService implements Service<Void> {
     @Override
     public void start(StartContext context) throws StartException {
 
+        synchronized (jtaEnvironmentBean) { // We lock here so that when the new map is returned from getCommitMarkableResourceJNDINames, interleaving of this call shouldn't allow two concurrent calls to set different maps in setCommitMarkableResourceJNDINames
+        // It's possibly not required to synchronize the whole block as not all of the jtaEnvironmentBean CMR getters return new maps IIRC
 
-        List<String> connectableResourceJNDINames = jtaEnvironmentBean.getValue().getCommitMarkableResourceJNDINames();
-        Map<String, String> connectableResourceTableNameMap = jtaEnvironmentBean.getValue().getCommitMarkableResourceTableNameMap();
-        Map<String, Boolean> performImmediateCleanupOfConnectableResourceBranchesMap = jtaEnvironmentBean.getValue().getPerformImmediateCleanupOfCommitMarkableResourceBranchesMap();
-        Map<String, Integer> connectableResourceRecordDeleteBatchSizeMap = jtaEnvironmentBean.getValue().getCommitMarkableResourceRecordDeleteBatchSizeMap();
+            List<String> connectableResourceJNDINames = jtaEnvironmentBean.getValue().getCommitMarkableResourceJNDINames();
+            Map<String, String> connectableResourceTableNameMap = jtaEnvironmentBean.getValue().getCommitMarkableResourceTableNameMap();
+            Map<String, Boolean> performImmediateCleanupOfConnectableResourceBranchesMap = jtaEnvironmentBean.getValue().getPerformImmediateCleanupOfCommitMarkableResourceBranchesMap();
+            Map<String, Integer> connectableResourceRecordDeleteBatchSizeMap = jtaEnvironmentBean.getValue().getCommitMarkableResourceRecordDeleteBatchSizeMap();
 
-        connectableResourceJNDINames.add(jndiName);
-        connectableResourceTableNameMap.put(jndiName, tableName);
-        performImmediateCleanupOfConnectableResourceBranchesMap.put(jndiName, immediateCleanup);
-        connectableResourceRecordDeleteBatchSizeMap.put(jndiName, batchSize);
+            connectableResourceJNDINames.add(jndiName);
+            connectableResourceTableNameMap.put(jndiName, tableName);
+            performImmediateCleanupOfConnectableResourceBranchesMap.put(jndiName, immediateCleanup);
+            connectableResourceRecordDeleteBatchSizeMap.put(jndiName, batchSize);
 
-        jtaEnvironmentBean.getValue().setCommitMarkableResourceJNDINames(connectableResourceJNDINames);
-        jtaEnvironmentBean.getValue().setCommitMarkableResourceTableNameMap(connectableResourceTableNameMap);
-        jtaEnvironmentBean.getValue().setPerformImmediateCleanupOfCommitMarkableResourceBranchesMap(performImmediateCleanupOfConnectableResourceBranchesMap);
-        jtaEnvironmentBean.getValue().setCommitMarkableResourceRecordDeleteBatchSizeMap(connectableResourceRecordDeleteBatchSizeMap);
+            jtaEnvironmentBean.getValue().setCommitMarkableResourceJNDINames(connectableResourceJNDINames);
+            jtaEnvironmentBean.getValue().setCommitMarkableResourceTableNameMap(connectableResourceTableNameMap);
+            jtaEnvironmentBean.getValue().setPerformImmediateCleanupOfCommitMarkableResourceBranchesMap(performImmediateCleanupOfConnectableResourceBranchesMap);
+            jtaEnvironmentBean.getValue().setCommitMarkableResourceRecordDeleteBatchSizeMap(connectableResourceRecordDeleteBatchSizeMap);
 
+        }
 
     }
 
